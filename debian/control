@@ -9,5 +9,6 @@ Homepage: https://github.com/AtmashkinMI/LEM
 Package: lem
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, linux-image (>= 3.0.0), gksu
+Recommends: nautilus-actions
 Description: Linux Erasing Machine
  Securely erases sensitive information in Linux.
