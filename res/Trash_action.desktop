@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Action
+Name=Securely Empty Trash...
+Name[ru]=Безопасно очистить корзину...
+Tooltip=Securely remove all files and directories from the Trash
+Tooltip[ru]=Безопасно удалить все файлы и каталоги из корзины
+Icon=user-trash-full
+TargetLocation=true
+Profiles=Action_profile;
+
+[X-Action-Profile Action_profile]
+Exec=sh -c "gksu -k -S -D LEM -- LEM --trash $USER"

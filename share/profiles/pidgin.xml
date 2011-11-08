@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Pidgin</name>
+  <description>You may select erasing tasks that are related to 'Pidgin'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Pidgin'</description>
+  <icon>pidgin.png</icon>
+  <task>
+    <name>Icon Cache</name>
+    <name lang="ru">Кэш иконок</name>
+    <description>You may erase icon cache of 'Pidgin'</description>
+    <description lang="ru">Вы можете стереть кэш иконок 'Pidgin'</description>
+    <icon>cache.png</icon>
+    <action deleteAfter="false" parentDir=".purple" wildCard="icons"/>
+  </task>
+  <task>
+    <name>Chat Log</name>
+    <name lang="ru">Журнал разговоров</name>
+    <description>You may erase chat log of 'Pidgin'</description>
+    <description lang="ru">Вы можете стереть журнал разговоров 'Pidgin'</description>
+    <icon>log_file.png</icon>
+    <action deleteAfter="false" parentDir=".purple" wildCard="logs"/>
+  </task>
+</profile>

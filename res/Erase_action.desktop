@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Action
+Name=Securely Erase...
+Name[ru]=Безопасно стереть...
+Tooltip=Securely erase all selected files and directories
+Tooltip[ru]=Безопасно стереть все выбранные файлы и каталоги
+Icon=edit-delete
+TargetLocation=true
+Profiles=Action_profile;
+
+[X-Action-Profile Action_profile]
+Exec=gksu -k -S -D LEM -- LEM --erase %F

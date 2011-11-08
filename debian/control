@@ -1,0 +1,13 @@
+Source: lem
+Section: utils
+Priority: standard
+Maintainer: Atmashkin M.I. <AtmashkinMI@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), cdbs, libqt4-dev
+Standards-Version: 3.9.2
+Homepage: https://github.com/AtmashkinMI/LEM
+
+Package: lem
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, linux-image (>= 3.0.0), gksu
+Description: Linux Erasing Machine
+ Securely erases sensitive information in Linux.

@@ -1,0 +1,20 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/all;
+Actions=Erase_action;Trash_action;
+X-KDE-Submenu=Linux Erasing Machine
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+
+[Desktop Action Erase_action]
+Name=Securely Erase...
+Name[ru]=Безопасно стереть...
+Icon=edit-delete
+Exec=gksu -k -S -D LEM -- LEM --erase %F
+
+[Desktop Action Trash_action]
+Name=Securely Empty Trash...
+Name[ru]=Безопасно очистить корзину...
+Icon=user-trash-full
+Exec=sh -c "gksu -k -S -D LEM -- LEM --trash $USER"

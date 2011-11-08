@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/">
+        <file>gpl-3.0-standalone.html</file>
+        <file>ram.png</file>
+        <file>hourglass.png</file>
+        <file>clear.png</file>
+        <file>socket.png</file>
+        <file>character_device.png</file>
+        <file>named_pipe.png</file>
+        <file>block_space.png</file>
+        <file>inode_space.png</file>
+        <file>hard_drive.png</file>
+        <file>unused_space.png</file>
+        <file>mount_point.png</file>
+        <file>swap.png</file>
+        <file>wipe_task.png</file>
+        <file>wipe_list.png</file>
+        <file>collapse.png</file>
+        <file>expand.png</file>
+        <file>unselect.png</file>
+        <file>select.png</file>
+        <file>uca_head.xml</file>
+        <file>uca_tail.xml</file>
+        <file>Erase_action.desktop</file>
+        <file>Trash_action.desktop</file>
+        <file>LEM_KDE.desktop</file>
+        <file>temp.png</file>
+        <file>package_manager.png</file>
+        <file>archlinux.svg</file>
+        <file>ubuntu.svg</file>
+        <file>mandriva.svg</file>
+        <file>user.png</file>
+        <file>users.png</file>
+        <file>root.png</file>
+    </qresource>
+</RCC>

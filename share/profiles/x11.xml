@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>X11</name>
+  <description>You may select erasing tasks that are related to 'X11'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'X11'</description>
+  <icon>x11.png</icon>
+  <task>
+    <name>Error Log</name>
+    <name lang="ru">Журнал ошибок</name>
+    <description>You may erase error log of 'X11'</description>
+    <description lang="ru">Вы можете стереть журнал ошибок 'X11'</description>
+    <icon>log_file.png</icon>
+    <action wildCard=".xsession-errors"/>
+    <action wildCard=".xsession-errors.old"/>
+  </task>
+</profile>
+

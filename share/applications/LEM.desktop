@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=LEM
+GenericName=Linux Erasing Machine
+Comment=Securely erases sensitive information in Linux
+Comment[ru]=Безопасно стирает конфиденциальную информацию в Linux
+Exec=sh -c "gksu -k -S -D LEM -- LEM --user $USER"
+TryExec=LEM
+Icon=LEM.svg
+Terminal=false
+StartupNotify=false
+Categories=Qt;Utility;

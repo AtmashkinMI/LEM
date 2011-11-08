@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Adobe Reader</name>
+  <description>You may select erasing tasks that are related to 'Adobe Reader'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Adobe Reader'</description>
+  <icon>adobe_reader.png</icon>
+  <task>
+    <name>Cache</name>
+    <name lang="ru">Кэш</name>
+    <description>You may erase cache of 'Adobe Reader'</description>
+    <description lang="ru">Вы можете стереть кэш 'Adobe Reader'</description>
+    <icon>cache.png</icon>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".adobe/Acrobat/7.0" wildCard="Cache"/>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".adobe/Acrobat/8.0" wildCard="Cache"/>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".adobe/Acrobat/9.0" wildCard="Cache"/>
+  </task>
+  <task>
+    <name>Recent Documents</name>
+    <name lang="ru">Недавние документы</name>
+    <description>You may erase preferences and recent documents of 'Adobe Reader'</description>
+    <description lang="ru">Вы можете стереть установки и недавние документы 'Adobe Reader'</description>
+    <icon source="theme">document-open-recent</icon>
+    <action parentDir=".adobe/Acrobat/7.0/Preferences" wildCard="reader_prefs"/>
+    <action parentDir=".adobe/Acrobat/8.0/Preferences" wildCard="reader_prefs"/>
+    <action parentDir=".adobe/Acrobat/9.0/Preferences" wildCard="reader_prefs"/>
+  </task>
+</profile>

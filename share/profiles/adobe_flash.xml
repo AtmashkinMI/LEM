@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Adobe Flash</name>
+  <description>You may select erasing tasks that are related to 'Adobe Flash'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Adobe Flash'</description>
+  <icon>adobe_flash.png</icon>
+  <task>
+    <name>Cache</name>
+    <name lang="ru">Кэш</name>
+    <description>You may erase cache of 'Adobe Flash'</description>
+    <description lang="ru">Вы можете стереть кэш 'Adobe Flash'</description>
+    <icon>cache.png</icon>
+    <action deleteAfter="false" parentDir=".adobe/Flash_Player" wildCard="AssetCache"/>
+  </task>
+  <task>
+    <name>Cookies</name>
+    <name lang="ru">Куки</name>
+    <description>You may erase cookies of 'Adobe Flash'</description>
+    <description lang="ru">Вы можете стереть куки 'Adobe Reader'</description>
+    <icon>cookies.png</icon>
+    <action deleteAfter="false" parentDir=".macromedia/Flash_Player" wildCard="#SharedObjects"/>
+    <action deleteAfter="false" parentDir=".macromedia/Flash_Player/macromedia.com/support/flashplayer" wildCard="sys"/>
+  </task>
+</profile>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Java</name>
+  <description>You may select erasing tasks that are related to 'Java'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Java'</description>
+  <icon>java.png</icon>
+  <task>
+    <name>Cache</name>
+    <name lang="ru">Кэш</name>
+    <description>You may erase cache of 'Java'</description>
+    <description lang="ru">Вы можете стереть кэш 'Java'</description>
+    <icon>cache.png</icon>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".java/deployment" wildCard="cache"/>
+    <action deleteAfter="false" parentDir=".icedteaplugin" wildCard="cache"/>
+  </task>
+</profile>
