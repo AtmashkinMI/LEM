@@ -3,7 +3,7 @@
     <patterns>*</patterns>
     <name>Securely Erase...</name>
     <name xml:lang="ru">Безопасно стереть...</name>
-    <command>gksu -k -S -D LEM -- LEM --erase %F</command>
+    <command>gksu -k -S -D 'Linux Erasing Machine' -- LEM --erase %F</command>
     <description>Securely erase all selected files and directories</description>
     <description xml:lang="ru">Безопасно стереть все выбранные файлы и каталоги</description>
     <directories/>
@@ -19,7 +19,7 @@
     <patterns>*</patterns>
     <name>Securely Empty Trash...</name>
     <name xml:lang="ru">Безопасно очистить корзину...</name>
-    <command>sh -c "gksu -k -S -D LEM -- LEM --trash $USER"</command>
+    <command>sh -c "gksu -k -S -D 'Linux Erasing Machine' -- LEM --trash $USER"</command>
     <description>Securely remove all files and directories from the Trash</description>
     <description xml:lang="ru">Безопасно удалить все файлы и каталоги из корзины</description>
     <directories/>

@@ -1,6 +1,7 @@
 #include <unistd.h>
 
 #include <QFileInfo>
+#include <QGtkStyle>
 #include <QTextCodec>
 #include <QMessageBox>
 #include <QTranslator>
@@ -11,6 +12,7 @@
 #include "gui/promptdialog.hpp"
 #include "gui/settingsdialog.hpp"
 
+#include "srm/systeminfo.hpp"
 #include "srm/memoryeraser.hpp"
 
 void showErrorMessage(const QString &errorString)
@@ -31,6 +33,25 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 
     app.setApplicationName("LEM");
+
+    if (!checkRunningKDE()) {
+        QFile iconTheme(QString("/usr/share/%1/gtk/icon_theme").arg(qApp->applicationName()));
+        if (iconTheme.open(QFile::ReadOnly)) {
+            QIcon::setThemeName(iconTheme.readAll().trimmed());
+        }
+
+        QFile fontName(QString("/usr/share/%1/gtk/font_name").arg(qApp->applicationName()));
+        if (fontName.open(QFile::ReadOnly)) {
+            QFont appFont;
+            if (appFont.fromString(fontName.readAll().trimmed())) {
+                app.setFont(appFont);
+            }
+        }
+
+        if (qputenv("GTK2_RC_FILES", QFile::encodeName(QString("/usr/share/%1/gtk/gtkrc").arg(qApp->applicationName())))) {
+            app.setStyle(new QGtkStyle);
+        }
+    }
 
     QTranslator appTranslator, qtTranslator;
     int langIndex = SettingsDialog::getLangIndex();

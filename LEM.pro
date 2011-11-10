@@ -100,7 +100,7 @@ CODECFORTR = UTF-8
 TRANSLATIONS += i18n/LEM_ru.ts
 
 data.path = /usr/share/LEM
-data.files = share/doc share/icons share/profiles share/translations
+data.files = share/doc share/gtk share/icons share/profiles share/translations
 
 desktop.path = /usr/share/applications
 desktop.files = share/applications/LEM.desktop

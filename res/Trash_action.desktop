@@ -9,4 +9,4 @@ TargetLocation=true
 Profiles=Action_profile;
 
 [X-Action-Profile Action_profile]
-Exec=sh -c "gksu -k -S -D LEM -- LEM --trash $USER"
+Exec=sh -c "gksu -k -S -D 'Linux Erasing Machine' -- LEM --trash $USER"
