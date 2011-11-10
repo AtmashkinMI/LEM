@@ -12,7 +12,7 @@ QList<SwapInfo> getSwapFiles()
     QList<SwapInfo> swapList;
 
     QProcess swapon;
-    swapon.start("swapon -s");
+    swapon.start("/sbin/swapon -s");
     if (swapon.waitForFinished(-1)) {
         QString infoLine;
 
@@ -41,7 +41,7 @@ QList<SwapInfo> getSwapFiles()
             QFileInfo swapPathInfo(swapInfo.swapPath);
             if (swapPathInfo.exists() && swapPathInfo.isAbsolute() && !swapPathInfo.isDir() && !swapPathInfo.isSymLink()) {
                 QProcess swaplabel;
-                swaplabel.start("swaplabel", QStringList() << swapInfo.swapPath);
+                swaplabel.start("/sbin/swaplabel", QStringList() << swapInfo.swapPath);
                 if (swaplabel.waitForFinished(-1)) {
                     QTextStream swaplabelStream(&swaplabel);
 
@@ -83,7 +83,7 @@ QList<SwapInfo> getSwapFiles()
 bool disableAllSwaps()
 {
     QProcess swapoff;
-    swapoff.start("swapoff -a");
+    swapoff.start("/sbin/swapoff -a");
 
     return swapoff.waitForFinished(-1) && swapoff.exitStatus() == QProcess::NormalExit && swapoff.exitCode() == 0;
 }
@@ -106,10 +106,10 @@ QList<int> restoreSwapFiles(const QList<SwapInfo> &swapList)
 
         mkswapParams << swapInfo.swapPath;
 
-        mkswap.start("mkswap", mkswapParams);
+        mkswap.start("/sbin/mkswap", mkswapParams);
         if (mkswap.waitForFinished(-1) && mkswap.exitStatus() == QProcess::NormalExit && mkswap.exitCode() == 0) {
             QProcess swapon;
-            swapon.start("swapon", QStringList() << swapInfo.swapPath);
+            swapon.start("/sbin/swapon", QStringList() << swapInfo.swapPath);
             if (swapon.waitForFinished(-1) && swapon.exitStatus() == QProcess::NormalExit && swapon.exitCode() == 0) {
                 continue;
             }

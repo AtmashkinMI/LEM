@@ -68,6 +68,12 @@ int main(int argc, char *argv[])
         if (qtTranslator.load(qtPath, "/usr/share/qt/translations")) {
             app.installTranslator(&qtTranslator);
         }
+        else if (qtTranslator.load(qtPath, "/usr/share/qt4/translations")) {
+            app.installTranslator(&qtTranslator);
+        }
+        else if (qtTranslator.load(qtPath, "/usr/lib/qt4/translations")) {
+            app.installTranslator(&qtTranslator);
+        }
     }
 
     app.setApplicationVersion(QObject::tr("Version - 0.11.11"));
