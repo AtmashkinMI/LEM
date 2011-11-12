@@ -33,5 +33,5 @@ void PfitznerOverwriter::fillBlock(char *block, int blockSize, int round)
 {
     Q_UNUSED(round)
 
-    fread(block, 1, blockSize, randomSource);
+    for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
 }

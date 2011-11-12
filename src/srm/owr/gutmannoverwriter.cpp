@@ -46,7 +46,7 @@ void GutmannOverwriter::fillBlock(char *block, int blockSize, int round)
         case 32:
         case 33:
         case 34:
-            fread(block, 1, blockSize, randomSource);
+            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
             break;
         default:
             for (int i = 0; i < blockSize / 3; ++i) {

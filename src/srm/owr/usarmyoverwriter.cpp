@@ -31,7 +31,7 @@ void USArmyOverwriter::fillBlock(char *block, int blockSize, int round)
 {
     switch (round) {
         case 0:
-            fread(block, 1, blockSize, randomSource);
+            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
             break;
         case 1:
             specChar = getc(randomSource);

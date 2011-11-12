@@ -47,7 +47,7 @@ void USDoDECEOverwriter::fillBlock(char *block, int blockSize, int round)
         case 2:
         case 3:
         case 6:
-            fread(block, 1, blockSize, randomSource);
+            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
             break;
     }
 }

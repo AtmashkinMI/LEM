@@ -211,46 +211,9 @@ void MemEraseDialog::changeOvercommitState(char newState)
     overcommitFile.write(&newState, 1);
 }
 
-void MemEraseDialog::changeOOMScores()
-{
-    oldScores.clear();
-
-    QRegExp pidRegExp("/proc/\\d+");
-    QString scorePattern("%1/oom_score_adj");
-    QByteArray newScore = QByteArray::number(OOM_SCORE_ADJ_MIN);
-
-    QDir procDir("/proc");
-    procDir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks);
-    QDirIterator procDirIterator(procDir);
-
-    while (procDirIterator.hasNext()) {
-        QString fileName = procDirIterator.next();
-        if (pidRegExp.exactMatch(fileName)) {
-            QFile scoreFile(scorePattern.arg(fileName));
-            if (scoreFile.open(QFile::ReadWrite)) {
-                QByteArray oldScore = scoreFile.readAll();
-                if (!oldScore.isEmpty() && scoreFile.seek(0) && scoreFile.write(newScore) == newScore.size()) {
-                    oldScores[scoreFile.fileName()] = oldScore;
-                }
-            }
-        }
-    }
-}
-
-void MemEraseDialog::restoreOOMScores()
-{
-    for (QMap<QString, QByteArray>::const_iterator i = oldScores.constBegin(); i != oldScores.constEnd(); ++i) {
-        QFile scoreFile(i.key());
-        if (scoreFile.exists() && scoreFile.open(QFile::WriteOnly)) {
-            scoreFile.write(i.value());
-        }
-    }
-}
-
 void MemEraseDialog::processExit()
 {
     changeOvercommitState(overcommitState);
-    restoreOOMScores();
 
     if (!canceled) {
         exitLock = true;
@@ -343,8 +306,6 @@ void MemEraseDialog::startErasure(bool showError, bool showDialog, int owrType, 
 
     saveOvercommitState();
     changeOvercommitState('1');
-
-    changeOOMScores();
 
     bytesCount = 0;
 

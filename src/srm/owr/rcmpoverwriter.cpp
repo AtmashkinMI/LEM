@@ -41,7 +41,7 @@ void RCMPOverwriter::fillBlock(char *block, int blockSize, int round)
             memset(block, '\xff', blockSize);
             break;
         case 6:
-            fread(block, 1, blockSize, randomSource);
+            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
             break;
     }
 }

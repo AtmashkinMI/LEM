@@ -1,7 +1,6 @@
 #ifndef MEMERASEDIALOG_HPP
 #define MEMERASEDIALOG_HPP
 
-#include <QMap>
 #include <QTime>
 #include <QWidget>
 
@@ -27,9 +26,6 @@ public:
 private:
     void saveOvercommitState();
     void changeOvercommitState(char newState);
-
-    void changeOOMScores();
-    void restoreOOMScores();
 
     void closeEvent(QCloseEvent *event);
     void keyPressEvent(QKeyEvent *event);
@@ -66,8 +62,6 @@ private:
     QProcess *eraseProc;
 
     QByteArray procBuffer;
-
-    QMap<QString, QByteArray> oldScores;
 
 signals:
     void stopped();
