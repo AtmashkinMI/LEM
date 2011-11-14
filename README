@@ -1,0 +1,81 @@
+               // Linux Erasing Machine [LEM] v.0.11.11 //
+
+              Securely erases sensitive information in Linux
+
+           Copyright © 2011 Atmashkin M.I. <AtmashkinMI@gmail.com>
+
+    ~ What is LEM?
+
+      LEM is my graduate work. I've uploaded it to github
+      in the hope that it will be useful to someone. I've
+      written all code by myself, but I was using results
+      of following open source projects: BCWipe, bleachbit,
+      scrub, shred, secure_delete and wipe. I would like to
+      express my gratitude and appreciation to their authors!
+      All icons were downloaded from the Internet. They are
+      free for non-commercial use, but if you are an author
+      of one of them and you don't want to see it in my
+      project then I will remove it completely.
+
+    ~ Is it ready?
+
+      The code is ready, but there might be some bugs :)
+      Translation to english and russian is ready, but
+      documentation is still in my dreams... New features
+      are not planned, but you can motivate me by $ :)
+
+    ~ How can I install LEM?
+
+      If you trust me (you'd better don't) then you can
+      download and install my packages:
+      - Arch Linux: http://dl.dropbox.com/u/...
+      - Debian/Ubuntu: http://dl.dropbox.com/u/...
+      - Mandriva: http://dl.dropbox.com/u/...
+
+      If you don't (good choice) then you need to setup
+      your GNU/Linux distribution for creating packages.
+      Ask Google how to do it! Here are installing steps.
+
+      At first you need to clone my repository:
+      $ git clone https://github.com/AtmashkinMI/LEM.git
+
+      Further depends on your GNU/Linux distribution:
+      - Arch Linux:
+      $ cd LEM/arch
+      $ makepkg -s -i --holdver
+
+      - Debian/Ubuntu:
+      $ mv LEM lem-0.11.11
+      $ tar czf lem_0.11.11.orig.tar.gz lem-0.11.11
+      $ cd lem-0.11.11/debian
+      $ debuild -uc -us
+      $ cd ../..
+      $ sudo apt-get install lem
+      
+      - Mandriva:
+      $ mv LEM lem-0.11.11
+      $ tar czf lem-0.11.11.tar.gz lem-0.11.11
+      $ mv lem-0.11.11.tar.gz ~/rpm/SOURCES/
+      $ cp lem-0.11.11/mandriva/lem.spec ~/rpm/SPECS/
+      $ cd ~/rpm/SPECS
+      $ rpmbuild -ba lem.spec
+      $ cd ~/rpm/RPMS/i586
+      $ sudo urpmi --no-suggests lem-0.11.11-1-mdv2011.0.i586.rpm
+
+      - Other:
+      $ cd LEM
+      $ qmake
+      $ make
+      $ sudo make install
+
+    ~ How can I configure LEM's appearance in my gtk-based desktop?
+
+      Just look at the directory: /usr/share/LEM/gtk. You can change
+      font name, gtk theme and icon theme through its files.
+
+    ~ How can I help?
+
+      You can add translations to other languages, new
+      *.xml profiles for applications, packages for your
+      GNU/Linux distribution or you can find bugs in
+      existing code. Please contact me via email.
