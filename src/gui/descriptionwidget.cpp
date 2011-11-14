@@ -209,7 +209,14 @@ void DescriptionWidget::createUnusedTree()
     qint64 blockSpace = FreeSpaceEraseDialog::getFreeBlocks(tasks[currentTask].filesList.first().fileName);
 
     if (inodeSpace >= 0 && blockSpace >= 0) {
-        QTreeWidgetItem *fileItem = new QTreeWidgetItem(filesTree, QStringList() << tasks[currentTask].filesList.first().fileName << tasks[currentTask].fileSystem << QString::number(inodeSpace) << fileSizeToStr(blockSpace));
+        QString inodeStr;
+        if (tasks[currentTask].fileSystem != "ReiserFS") {
+            inodeStr = QString::number(inodeSpace);
+        }
+        else {
+            inodeStr = tr("unspecified");
+        }
+        QTreeWidgetItem *fileItem = new QTreeWidgetItem(filesTree, QStringList() << tasks[currentTask].filesList.first().fileName << tasks[currentTask].fileSystem << inodeStr << fileSizeToStr(blockSpace));
 
         fileItem->setIcon(0, currentTask->icon(0));
 
@@ -219,13 +226,12 @@ void DescriptionWidget::createUnusedTree()
         unusedSpacetask = currentTask;
 
         connect(filesTree, SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(checkUnusedSpace(QTreeWidgetItem *, int)));
+
+        checkUnusedSpace(fileItem, -1);
     }
     else {
-        inodeSpace = 0;
-        blockSpace = 0;
+        totalSizeLabel->setText(tr("<u>Total size:</u> <b>unknown</b>"));
     }
-
-    totalSizeLabel->setText(tr("<u>Total size:</u> <b>%1 inodes</b> + <b>%2</b>").arg(QString::number(inodeSpace), fileSizeToStr(blockSpace)));
 }
 
 void DescriptionWidget::fillCustomTree()
@@ -653,7 +659,8 @@ void DescriptionWidget::setApplicationWindow()
 
     QLabel *featuresLongLabel = new QLabel(this);
     featuresLongLabel->setText(tr("• Selected files and directories on disks (also directly from your favorite file manager);\n"
-                                  "• Items in Trash can (also directly from your favorite file manager)."));
+                                  "• Items in Trash can (also directly from your favorite file manager);\n"
+                                  "• Application specific data (cache, history, logs, passwords, temporary files, recent documents)."));
     featuresLongLabel->setFont(littleFont);
     featuresLongLabel->setWordWrap(true);
     featuresLongLabel->setIndent(30);

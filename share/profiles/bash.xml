@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profile>
-  <name>Bash</name>
+  <name>bash</name>
   <description>You may select erasing tasks that are related to 'bash'</description>
   <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'bash'</description>
   <icon source="theme">utilities-terminal</icon>
   <task>
-    <name>Command history</name>
+    <name>Command History</name>
     <name lang="ru">История команд</name>
     <description>You may erase command history of 'bash'</description>
     <description lang="ru">Вы можете стереть историю команд 'bash'</description>

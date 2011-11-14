@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Opera</name>
+  <description>You may select erasing tasks that are related to 'Opera'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Opera'</description>
+  <icon>opera.png</icon>
+  <task>
+    <name>Cache</name>
+    <name lang="ru">Кэш</name>
+    <description>You may erase cache of 'Opera'</description>
+    <description lang="ru">Вы можете стереть кэш 'Opera'</description>
+    <icon>cache.png</icon>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".opera" wildCard="cache"/>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".opera" wildCard="cache4"/>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".opera" wildCard="opcache"/>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".opera" wildCard="thumbnails"/>
+  </task>
+  <task>
+    <name>Cookies</name>
+    <name lang="ru">Куки</name>
+    <description>You may erase cookies of 'Opera'</description>
+    <description lang="ru">Вы можете стереть куки 'Opera'</description>
+    <icon>cookies.png</icon>
+    <action parentDir=".opera" wildCard="cookies4.dat"/>
+  </task>
+  <task>
+    <name>Current Session</name>
+    <name lang="ru">Текущая сессия</name>
+    <description>You may erase current session of 'Opera'</description>
+    <description lang="ru">Вы можете стереть текущую сессию 'Opera'</description>
+    <icon>session.png</icon>
+    <action parentDir=".opera/sessions" wildCard="autosave.win"/>
+    <action parentDir=".opera/sessions" wildCard="autosave.win.bak"/>
+  </task>
+  <task>
+    <name>DOM Storage</name>
+    <name lang="ru">Хранилище DOM</name>
+    <description>You may erase HTML5 cookies of 'Opera'</description>
+    <description lang="ru">Вы можете стереть HTML5 куки 'Opera'</description>
+    <icon source="theme">network-workgroup</icon>
+    <action deleteAfter="false" parentDir=".opera" wildCard="pstorage"/>
+  </task>
+  <task>
+    <name>Download History</name>
+    <name lang="ru">История закачек</name>
+    <description>You may download history of 'Opera'</description>
+    <description lang="ru">Вы можете стереть историю закачек 'Opera'</description>
+    <icon>downloads.png</icon>
+    <action parentDir=".opera" wildCard="download.dat"/>
+  </task>
+  <task>
+    <name>Search History</name>
+    <name lang="ru">История поиска</name>
+    <description>You may search history of 'Opera'</description>
+    <description lang="ru">Вы можете стереть историю поиска 'Opera'</description>
+    <icon source="theme">system-search</icon>
+    <action parentDir=".opera" wildCard="search_field_history.dat"/>
+  </task>
+  <task>
+    <name>URL History</name>
+    <name lang="ru">История URL</name>
+    <description>You may erase the history of visited web pages in 'Opera'</description>
+    <description lang="ru">Вы можете стереть историю посещенных веб-страниц в 'Opera'</description>
+    <icon>history.png</icon>
+    <action parentDir=".opera" wildCard="global.dat"/>
+    <action parentDir=".opera" wildCard="global_history.dat"/>
+    <action parentDir=".opera" wildCard="typed_history.xml"/>
+    <action parentDir=".opera" wildCard="vlink4.dat"/>
+    <action parentDir=".opera/icons" wildCard="*.gif"/>
+    <action parentDir=".opera/icons" wildCard="*.ico"/>
+    <action parentDir=".opera/icons" wildCard="*.idx"/>
+    <action parentDir=".opera/vps/????" wildCard="md.dat"/>
+  </task>
+</profile>

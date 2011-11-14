@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Firefox</name>
+  <description>You may select erasing tasks that are related to 'Firefox'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Firefox'</description>
+  <icon>firefox.png</icon>
+  <task>
+    <name>Cache</name>
+    <name lang="ru">Кэш</name>
+    <description>You may erase cache of 'Firefox'</description>
+    <description lang="ru">Вы можете стереть кэш 'Firefox'</description>
+    <icon>cache.png</icon>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".mozilla/firefox/????????.default" wildCard="Cache*"/>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".mozilla/firefox/????????.default" wildCard="OfflineCache"/>
+  </task>
+  <task>
+    <name>Cookies</name>
+    <name lang="ru">Куки</name>
+    <description>You may erase cookies of 'Firefox'</description>
+    <description lang="ru">Вы можете стереть куки 'Firefox'</description>
+    <icon>cookies.png</icon>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="cookies.txt"/>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="cookies.sqlite"/>
+  </task>
+  <task>
+    <name>DOM Storage</name>
+    <name lang="ru">Хранилище DOM</name>
+    <description>You may erase HTML5 cookies of 'Firefox'</description>
+    <description lang="ru">Вы можете стереть HTML5 куки 'Firefox'</description>
+    <icon source="theme">network-workgroup</icon>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="webappsstore.sqlite"/>
+  </task>
+  <task>
+    <name>Download History</name>
+    <name lang="ru">История закачек</name>
+    <description>You may download history of 'Firefox'</description>
+    <description lang="ru">Вы можете стереть историю закачек 'Firefox'</description>
+    <icon>downloads.png</icon>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="downloads.rdf"/>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="downloads.sqlite"/>
+  </task>
+  <task>
+    <name>Form History</name>
+    <name lang="ru">История форм</name>
+    <description>You may erase the history of forms entered on web sites in 'Firefox'</description>
+    <description lang="ru">Вы можете стереть историю форм, введенных на веб-сайтах в 'Firefox'</description>
+    <icon source="theme">text-html</icon>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="formhistory.dat"/>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="formhistory.sqlite"/>
+  </task>
+  <task>
+    <name>Passwords</name>
+    <name lang="ru">Пароли</name>
+    <description>You may erase the list of stored usernames and passwords in 'Firefox'</description>
+    <description lang="ru">Вы можете стереть список сохраненных логинов и паролей в 'Firefox'</description>
+    <icon source="theme">dialog-password</icon>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="signons.txt"/>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="signons2.txt"/>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="signons3.txt"/>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="signons.sqlite"/>
+  </task>
+  <task>
+    <name>Current Session</name>
+    <name lang="ru">Текущая сессия</name>
+    <description>You may erase current session of 'Firefox'</description>
+    <description lang="ru">Вы можете стереть текущую сессию 'Firefox'</description>
+    <icon>session.png</icon>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="sessionstore.js"/>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="sessionstore.bak"/>
+  </task>
+  <task>
+    <name>Site Preferences</name>
+    <name lang="ru">Настройки сайтов</name>
+    <description>You may erase site-specific preferences in 'Firefox'</description>
+    <description lang="ru">Вы можете стереть настройки для конкретных сайтов в 'Firefox'</description>
+    <icon source="theme">preferences-system</icon>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="content-prefs.sqlite"/>
+  </task>
+  <task>
+    <name>URL History</name>
+    <name lang="ru">История URL</name>
+    <description>You may erase the history of visited web pages in 'Firefox'</description>
+    <description lang="ru">Вы можете стереть историю посещенных веб-страниц в 'Firefox'</description>
+    <icon>history.png</icon>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="history.dat"/>
+    <action parentDir=".mozilla/firefox/????????.default" wildCard="places.sqlite"/>
+  </task>
+</profile>

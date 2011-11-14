@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Evolution</name>
+  <description>You may select erasing tasks that are related to 'Evolution'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Evolution'</description>
+  <icon>evolution.png</icon>
+  <task>
+    <name>Cache</name>
+    <name lang="ru">Кэш</name>
+    <description>You may erase cache of 'Evolution'</description>
+    <description lang="ru">Вы можете стереть кэш 'Evolution'</description>
+    <icon>cache.png</icon>
+    <action deleteAfter="false" parentDir=".evolution" wildCard="cache"/>
+  </task>
+</profile>

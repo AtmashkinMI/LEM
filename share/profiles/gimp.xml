@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>GIMP</name>
+  <description>You may select erasing tasks that are related to 'GIMP'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'GIMP'</description>
+  <icon>gimp.png</icon>
+  <task>
+    <name>Temporary Files</name>
+    <name lang="ru">Временные файлы</name>
+    <description>You may erase temporary files of 'GIMP'</description>
+    <description lang="ru">Вы можете стереть временные файлы 'GIMP'</description>
+    <icon>temp.png</icon>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".gimp-2.4" wildCard="tmp"/>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".gimp-2.6" wildCard="tmp"/>
+  </task>
+</profile>

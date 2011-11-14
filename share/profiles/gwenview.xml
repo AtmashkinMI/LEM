@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Gwenview</name>
+  <description>You may select erasing tasks that are related to 'Gwenview'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Gwenview'</description>
+  <icon>gwenview.png</icon>
+  <task>
+    <name>Recent Documents</name>
+    <name lang="ru">Недавние документы</name>
+    <description>You may erase the list of recently used documents in 'Gwenview'</description>
+    <description lang="ru">Вы можете стереть список недавно использованных документов в 'Gwenview'</description>
+    <icon source="theme">document-open-recent</icon>
+    <action parentDir=".kde/share/apps/gwenview/recenturls" wildCard="*rc"/>
+    <action parentDir=".kde/share/apps/gwenview/recentfolders" wildCard="*rc"/>
+    <action parentDir=".kde4/share/apps/gwenview/recenturls" wildCard="*rc"/>
+    <action parentDir=".kde4/share/apps/gwenview/recentfolders" wildCard="*rc"/>
+  </task>
+</profile>

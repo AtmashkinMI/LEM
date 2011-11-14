@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>KDE</name>
+  <description>You may select erasing tasks that are related to 'KDE'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'KDE'</description>
+  <icon>kde.png</icon>
+  <task>
+    <name>Recent Documents</name>
+    <name lang="ru">Недавние документы</name>
+    <description>You may erase the list of recently used files and applications in 'KDE'</description>
+    <description lang="ru">Вы можете стереть список недавно использованных файлов и приложений в 'KDE'</description>
+    <icon source="theme">document-open-recent</icon>
+    <action parentDir=".kde/share/apps/RecentDocuments" wildCard="*.desktop"/>
+    <action parentDir=".kde4/share/apps/RecentDocuments" wildCard="*.desktop"/>
+  </task>
+</profile>

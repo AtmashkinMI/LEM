@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>GNOME</name>
+  <description>You may select erasing tasks that are related to 'GNOME'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'GNOME'</description>
+  <icon>gnome.png</icon>
+  <task>
+    <name>Run History</name>
+    <name lang="ru">История запуска</name>
+    <description>You may erase the history of applications executed in 'GNOME' via ALT+F2</description>
+    <description lang="ru">Вы можете стереть историю приложений, запущенных в 'GNOME' через ALT+F2</description>
+    <icon source="theme">system-run</icon>
+    <action parentDir=".gconf/apps/gnome-settings/gnome-panel" wildCard="%gconf.xml"/>
+  </task>
+  <task>
+    <name>Search History</name>
+    <name lang="ru">История поиска</name>
+    <description>You may erase search history in 'GNOME'</description>
+    <description lang="ru">Вы можете стереть историю поиска в 'GNOME'</description>
+    <icon source="theme">system-search</icon>
+    <action parentDir=".gconf/apps/gnome-settings/gnome-search-tool" wildCard="%gconf.xml"/>
+  </task>
+</profile>

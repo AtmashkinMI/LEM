@@ -58,6 +58,9 @@ MainWindow::MainWindow(const QString &currentUserName)
 
     setCentralWidget(splitter);
 
+    resize(800, 500);
+    splitter->setSizes(QList<int>() << 250 << width() - 250);
+
     memEraseDialog = new MemEraseDialog;
     fileEraseDialog = new FileEraseDialog;
     freeSpaceEraseDialog = new FreeSpaceEraseDialog;
@@ -821,7 +824,7 @@ void MainWindow::addSystemTask()
 
     if (!taskInfo.filesList.isEmpty()) {
         taskInfo.description = tr("You may erase temporary system files");
-        addNewTask(tr("Temporary files"), QIcon(":/temp.png"), taskInfo, systemTask);
+        addNewTask(tr("Temporary files"), QIcon(QString("/usr/share/%1/icons/temp.png").arg(qApp->applicationName())), taskInfo, systemTask);
     }
 
     whiteList.clear();
@@ -919,79 +922,103 @@ void MainWindow::parseActionTag(const QDomElement &actionTag, const QString &use
         return;
     }
 
-    QDir parentDir;
+    QList<QDir> parentDirList;
 
     QString parentDirPath = actionTag.attribute("parentDir");
     if (parentDirPath.isEmpty()) {
-        parentDir.setPath(homeDir);
+        parentDirList << QDir(homeDir);
     }
     else {
-        parentDir.setPath(QString("%1/%2").arg(homeDir, parentDirPath));
-    }
+        int slashIndex = parentDirPath.lastIndexOf('/');
 
-    if (!parentDir.exists()) {
-        return;
-    }
+        QDir rootDir;
+        if (slashIndex == -1) {
+            rootDir.setPath(homeDir);
+        }
+        else {
+            rootDir.setPath(QString("%1/%2").arg(homeDir, parentDirPath.left(slashIndex)));
+        }
 
-    parentDir.setFilter(QDir::Files | QDir::Dirs | QDir::System | QDir::Hidden | QDir::NoDotAndDotDot);
-    QStringList parentDirList = parentDir.entryList();
+        if (!rootDir.exists()) {
+            return;
+        }
+
+        rootDir.setFilter(QDir::Dirs | QDir::Hidden | QDir::NoDotAndDotDot);
+        rootDir.setNameFilters(QStringList(parentDirPath.right(parentDirPath.size() - slashIndex - 1)));
+
+        QFileInfoList rootDirList = rootDir.entryInfoList();
+        for (int i = 0; i < rootDirList.size(); ++i) {
+            parentDirList << QDir(rootDirList.at(i).absoluteFilePath());
+        }
+    }
 
     FileInfo fileInfo;
     QFileInfo fileCheck;
 
+    QStringList parentDirEntryList;
+
     for (int i = 0; i < parentDirList.size(); ++i) {
-        QString fileName = parentDirList.at(i);
-        fileCheck.setFile(QString("%1/%2").arg(parentDir.absolutePath(), fileName));
-
-        if (!regExp.exactMatch(fileName)) {
+        if (!parentDirList[i].exists()) {
             continue;
         }
 
-        bool skip = false;
-        for (int j = 0; j < whiteList.size(); ++j) {
-            if (whiteList.at(j).exactMatch(fileName)) {
-                skip = true;
-                break;
-            }
-        }
-        if (skip) {
-            continue;
-        }
+        parentDirList[i].setFilter(QDir::Files | QDir::Dirs | QDir::System | QDir::Hidden | QDir::NoDotAndDotDot);
+        parentDirEntryList = parentDirList[i].entryList();
 
-        if (fileCheck.isDir()) {
-            if (deleteAfter) {
-                fileInfo.deleteAfter = true;
-                fileInfo.fileName = fileCheck.absoluteFilePath();
+        for (int j = 0; j < parentDirEntryList.size(); ++j) {
+            QString fileName = parentDirEntryList.at(j);
+            fileCheck.setFile(QString("%1/%2").arg(parentDirList[i].absolutePath(), fileName));
 
-                filesList << fileInfo;
+            if (!regExp.exactMatch(fileName)) {
+                continue;
             }
-            else {
-                if (deleteSubDirs) {
-                    fileInfo.deleteAfter = false;
+
+            bool skip = false;
+            for (int k = 0; k < whiteList.size(); ++k) {
+                if (whiteList.at(k).exactMatch(fileName)) {
+                    skip = true;
+                    break;
+                }
+            }
+            if (skip) {
+                continue;
+            }
+
+            if (fileCheck.isDir()) {
+                if (deleteAfter) {
+                    fileInfo.deleteAfter = true;
                     fileInfo.fileName = fileCheck.absoluteFilePath();
 
                     filesList << fileInfo;
                 }
                 else {
-                    fileInfo.deleteAfter = deleteSubFiles;
+                    if (deleteSubDirs) {
+                        fileInfo.deleteAfter = false;
+                        fileInfo.fileName = fileCheck.absoluteFilePath();
 
-                    QDirIterator dirIterator(fileCheck.absoluteFilePath(), QDir::Files | QDir::Dirs | QDir::System | QDir::Hidden | QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
-                    while (dirIterator.hasNext()) {
-                        fileCheck.setFile(dirIterator.next());
-                        if (!fileCheck.isDir()) {
-                            fileInfo.fileName = fileCheck.absoluteFilePath();
+                        filesList << fileInfo;
+                    }
+                    else {
+                        fileInfo.deleteAfter = deleteSubFiles;
 
-                            filesList << fileInfo;
+                        QDirIterator dirIterator(fileCheck.absoluteFilePath(), QDir::Files | QDir::Dirs | QDir::System | QDir::Hidden | QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
+                        while (dirIterator.hasNext()) {
+                            fileCheck.setFile(dirIterator.next());
+                            if (!fileCheck.isDir()) {
+                                fileInfo.fileName = fileCheck.absoluteFilePath();
+
+                                filesList << fileInfo;
+                            }
                         }
                     }
                 }
             }
-        }
-        else {
-            fileInfo.deleteAfter = deleteAfter;
-            fileInfo.fileName = fileCheck.absoluteFilePath();
+            else {
+                fileInfo.deleteAfter = deleteAfter;
+                fileInfo.fileName = fileCheck.absoluteFilePath();
 
-            filesList << fileInfo;
+                filesList << fileInfo;
+            }
         }
     }
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Thunderbird</name>
+  <description>You may select erasing tasks that are related to 'Thunderbird'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Thunderbird'</description>
+  <icon>thunderbird.png</icon>
+  <task>
+    <name>Cache</name>
+    <name lang="ru">Кэш</name>
+    <description>You may erase cache of 'Thunderbird'</description>
+    <description lang="ru">Вы можете стереть кэш 'Thunderbird'</description>
+    <icon>cache.png</icon>
+    <action deleteAfter="false" parentDir=".thunderbird/default/????????.slt" wildCard="Cache"/>
+    <action deleteAfter="false" parentDir=".thunderbird/????????.default" wildCard="Cache"/>
+    <action deleteAfter="false" parentDir=".thunderbird/Profiles/????????.default" wildCard="Cache"/>
+  </task>
+  <task>
+    <name>Cookies</name>
+    <name lang="ru">Куки</name>
+    <description>You may erase cookies of 'Thunderbird'</description>
+    <description lang="ru">Вы можете стереть куки 'Thunderbird'</description>
+    <icon>cookies.png</icon>
+    <action parentDir=".thunderbird/default/????????.slt" wildCard="cookies.sqlite"/>
+    <action parentDir=".thunderbird/????????.default" wildCard="cookies.sqlite"/>
+    <action parentDir=".thunderbird/Profiles/????????.default" wildCard="cookies.sqlite"/>
+  </task>
+  <task>
+    <name>Passwords</name>
+    <name lang="ru">Пароли</name>
+    <description>You may erase the list of stored usernames and passwords in 'Thunderbird'</description>
+    <description lang="ru">Вы можете стереть список сохраненных логинов и паролей в 'Thunderbird'</description>
+    <icon source="theme">dialog-password</icon>
+    <action parentDir=".thunderbird/default/????????.slt" wildCard="signons.sqlite"/>
+    <action parentDir=".thunderbird/default/????????.slt" wildCard="signons.txt"/>
+    <action parentDir=".thunderbird/default/????????.slt" wildCard="signons3.txt"/>
+    <action parentDir=".mozilla-thunderbird/????????.default" wildCard="signons.txt"/>
+    <action parentDir=".thunderbird/????????.default" wildCard="signons.sqlite"/>
+    <action parentDir=".thunderbird/Profiles/????????.default" wildCard="signons.sqlite"/>
+  </task>
+</profile>

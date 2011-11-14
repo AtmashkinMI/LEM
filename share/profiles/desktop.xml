@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Desktop</name>
+  <name lang="ru">Рабочий стол</name>
+  <description>You may erase all traces of your desktop utilization</description>
+  <description lang="ru">Вы можете стереть все следы использования вашего рабочего стола</description>
+  <icon source="theme">user-desktop</icon>
+  <task>
+    <name>Cache</name>
+    <name lang="ru">Кэш</name>
+    <description>You may erase cache of different desktop applications</description>
+    <description lang="ru">Вы можете стереть кэш различных приложений рабочего стола</description>
+    <icon>cache.png</icon>
+    <action parentDir=".cache" wildCard="*">
+      <skip wildCard="wallpaper"/>
+      <skip wildCard="gnome-control-center"/>
+    </action>
+  </task>
+  <task>
+    <name>Recent Documents</name>
+    <name lang="ru">Недавние документы</name>
+    <description>You may erase the list of recently used files and applications</description>
+    <description lang="ru">Вы можете стереть список недавно использованных файлов и приложений</description>
+    <icon source="theme">document-open-recent</icon>
+    <action wildCard=".recently-used"/>
+    <action wildCard=".recently-used.xbel"/>
+    <action parentDir=".local/share" wildCard="recently-used.xbel"/>
+  </task>
+  <task>
+    <name>Thumbnails</name>
+    <name lang="ru">Миниатюры</name>
+    <description>You may erase thumbnails of recently viewed images</description>
+    <description lang="ru">Вы можете стереть миниатюры недавно просмотренных изображений</description>
+    <icon source="theme">image-x-generic</icon>
+    <action deleteAfter="false" deleteSubDirs="false" wildCard=".thumbnails"/>
+  </task>
+  <task>
+    <name>Trash</name>
+    <name lang="ru">Корзина</name>
+    <description>You may securely remove all files and directories from the Trash</description>
+    <description lang="ru">Вы можете безопасно удалить все файлы и каталоги из корзины</description>
+    <icon source="theme">user-trash-full</icon>
+    <action parentDir=".local/share/Trash" wildCard="*">
+      <skip wildCard="info"/>
+      <skip wildCard="files"/>
+    </action>
+    <action deleteAfter="false" parentDir=".local/share/Trash" wildCard="info"/>
+    <action deleteAfter="false" parentDir=".local/share/Trash" wildCard="files"/>
+  </task>
+</profile>

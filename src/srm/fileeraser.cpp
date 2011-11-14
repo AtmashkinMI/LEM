@@ -55,36 +55,46 @@ static int processFile(const char *filePath, const struct stat *fileStat, int /*
 {
     int ret = 0;
 
-    if (S_ISDIR(fileStat->st_mode)) {
-        if (access(filePath, R_OK | W_OK | X_OK) != 0) {
-            ret = 1;
+    int fileDesc = open(filePath, O_RDONLY);
+    if (fileDesc != -1) {
+        long flags;
+        if (ioctl(fileDesc, FS_IOC_GETFLAGS, &flags) != -1) {
+            flags &= ~FS_IMMUTABLE_FL;
+            if (ioctl(fileDesc, FS_IOC_SETFLAGS, &flags) == -1) {
+                ret = 5;
+            }
         }
-    }
-    else {
-        if (faccessat(AT_FDCWD, filePath, R_OK | W_OK, AT_SYMLINK_NOFOLLOW) != 0) {
-            ret = 1;
-        }
-        else {
-            if (S_ISBLK(fileStat->st_mode) || S_ISREG(fileStat->st_mode)) {
-                int fileDesc = open(filePath, O_RDONLY);
-                if (fileDesc != -1) {
-                    qint64 fileSize = getFileSize(fileDesc, fileStat);
-                    if (fileSize < 0) {
-                        ret = 2;
-                    }
-                    else {
-                        totalSize += fileSize;
-                    }
 
-                    if (close(fileDesc) != 0) {
-                        ret = 3;
-                    }
+        if (ret == 0) {
+            if (S_ISDIR(fileStat->st_mode)) {
+                if (access(filePath, R_OK | W_OK | X_OK) != 0) {
+                    ret = 1;
+                }
+            }
+            else {
+                if (faccessat(AT_FDCWD, filePath, R_OK | W_OK, AT_SYMLINK_NOFOLLOW) != 0) {
+                    ret = 1;
                 }
                 else {
-                    ret = 4;
+                    if (S_ISBLK(fileStat->st_mode) || S_ISREG(fileStat->st_mode)) {
+                        qint64 fileSize = getFileSize(fileDesc, fileStat);
+                        if (fileSize < 0) {
+                            ret = 2;
+                        }
+                        else {
+                            totalSize += fileSize;
+                        }
+                    }
                 }
             }
         }
+
+        if (close(fileDesc) != 0) {
+            ret = 3;
+        }
+    }
+    else {
+        ret = 4;
     }
 
     return ret;
@@ -337,6 +347,9 @@ void FileEraser::init(int owrType, const FilesList &filesList)
                 return;
             case 4:
                 fileError(tr("Can't open %1 '%2'!"), fileStruct);
+                return;
+            case 5:
+                fileError(tr("Can't drop 'immutable' flag on %1 '%2'!"), fileStruct);
                 return;
             default:
                 fileError(tr("Can't process %1 '%2'!"), fileStruct);
@@ -669,6 +682,7 @@ void FileEraser::eraseDir(const FileStruct &fileStruct)
     QByteArray baseName = QFile::encodeName(fileStruct.fileInfo.fileName);
 
     DIR *dirPtr = opendir(baseName);
+
     if (dirPtr == 0) {
         fileError(tr("Can't open %1 '%2'!"), fileStruct);
         return;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>gedit</name>
+  <description>You may select erasing tasks that are related to 'gedit'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'gedit'</description>
+  <icon source="theme">accessories-text-editor</icon>
+  <task>
+    <name>Recent Documents</name>
+    <name lang="ru">Недавние документы</name>
+    <description>You may erase preferences and recent documents of 'gedit'</description>
+    <description lang="ru">Вы можете стереть установки и недавние документы 'gedit'</description>
+    <icon source="theme">document-open-recent</icon>
+    <action parentDir=".cache/gedit" wildCard="gedit-metadata.xml"/>
+    <action parentDir=".gnome2" wildCard="gedit-metadata.xml"/>
+  </task>
+</profile>

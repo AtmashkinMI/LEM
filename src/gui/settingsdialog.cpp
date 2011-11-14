@@ -57,7 +57,7 @@ void SettingsDialog::showEvent(QShowEvent *event)
         applyButton->setEnabled(false);
         cancelButton->setFocus();
 
-        resize(500, 400);
+        resize(580, 470);
     }
 }
 

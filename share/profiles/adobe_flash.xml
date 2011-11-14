@@ -16,7 +16,7 @@
     <name>Cookies</name>
     <name lang="ru">Куки</name>
     <description>You may erase cookies of 'Adobe Flash'</description>
-    <description lang="ru">Вы можете стереть куки 'Adobe Reader'</description>
+    <description lang="ru">Вы можете стереть куки 'Adobe Flash'</description>
     <icon>cookies.png</icon>
     <action deleteAfter="false" parentDir=".macromedia/Flash_Player" wildCard="#SharedObjects"/>
     <action deleteAfter="false" parentDir=".macromedia/Flash_Player/macromedia.com/support/flashplayer" wildCard="sys"/>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <name>Chromium</name>
+  <description>You may select erasing tasks that are related to 'Chromium'</description>
+  <description lang="ru">Вы можете выбрать задания по стиранию, связанные с 'Chromium'</description>
+  <icon>chromium.png</icon>
+  <task>
+    <name>Cache</name>
+    <name lang="ru">Кэш</name>
+    <description>You may erase cache of 'Chromium'</description>
+    <description lang="ru">Вы можете стереть кэш 'Chromium'</description>
+    <icon>cache.png</icon>
+    <action deleteAfter="false" deleteSubDirs="false" parentDir=".cache" wildCard="chromium"/>
+    <action parentDir=".config/chromium/Default" wildCard="Preferences"/>
+    <action parentDir=".config/chromium" wildCard="Local State"/>
+  </task>
+  <task>
+    <name>Cookies</name>
+    <name lang="ru">Куки</name>
+    <description>You may erase cookies of 'Chromium'</description>
+    <description lang="ru">Вы можете стереть куки 'Chromium'</description>
+    <icon>cookies.png</icon>
+    <action parentDir=".config/chromium/Default" wildCard="Cookies"/>
+    <action parentDir=".config/chromium/Default" wildCard="Extension Cookies"/>
+  </task>
+  <task>
+    <name>DOM Storage</name>
+    <name lang="ru">Хранилище DOM</name>
+    <description>You may erase HTML5 cookies of 'Chromium'</description>
+    <description lang="ru">Вы можете стереть HTML5 куки 'Chromium'</description>
+    <icon source="theme">network-workgroup</icon>
+    <action parentDir=".config/chromium/Default/databases" wildCard="Databases.db"/>
+    <action parentDir=".config/chromium/Default/Local Storage" wildCard="http*localstorage"/>
+    <action deleteAfter="false" parentDir=".config/chromium/Default/databases" wildCard="http*"/>
+  </task>
+  <task>
+    <name>Current Session</name>
+    <name lang="ru">Текущая сессия</name>
+    <description>You may erase current session of 'Chromium'</description>
+    <description lang="ru">Вы можете стереть текущую сессию 'Chromium'</description>
+    <icon>session.png</icon>
+    <action parentDir=".config/chromium/Default" wildCard="Current Session"/>
+    <action parentDir=".config/chromium/Default" wildCard="Current Tabs"/>
+    <action parentDir=".config/chromium/Default" wildCard="Last Session"/>
+    <action parentDir=".config/chromium/Default" wildCard="Last Tabs"/>
+  </task>
+  <task>
+    <name>Form History</name>
+    <name lang="ru">История форм</name>
+    <description>You may erase the history of forms entered on web sites in 'Chromium'</description>
+    <description lang="ru">Вы можете стереть историю форм, введенных на веб-сайтах в 'Chromium'</description>
+    <icon source="theme">text-html</icon>
+    <action parentDir=".config/chromium/Default" wildCard="Web Data"/>
+  </task>
+  <task>
+    <name>URL History</name>
+    <name lang="ru">История URL</name>
+    <description>You may erase the history of visited web pages in 'Chromium'</description>
+    <description lang="ru">Вы можете стереть историю посещенных веб-страниц в 'Chromium'</description>
+    <icon>history.png</icon>
+    <action parentDir=".config/chromium/Default" wildCard="History"/>
+    <action parentDir=".config/chromium/Default" wildCard="Favicons"/>
+    <action parentDir=".config/chromium/Default" wildCard="Archived History"/>
+    <action parentDir=".config/chromium/Default" wildCard="Archived History-journal"/>
+    <action parentDir=".config/chromium/Default" wildCard="History Provider Cache"/>
+    <action parentDir=".config/chromium/Default" wildCard="History-journal"/>
+    <action parentDir=".config/chromium/Default" wildCard="Thumbnails"/>
+    <action parentDir=".config/chromium/Default" wildCard="Thumbnails-journal"/>
+    <action parentDir=".config/chromium/Default" wildCard="Top Sites"/>
+    <action parentDir=".config/chromium/Default" wildCard="Visited Links"/>
+    <action parentDir=".config/chromium/Default" wildCard="History Index ????-??"/>
+    <action parentDir=".config/chromium/Default" wildCard="History Index ????-??-journal"/>
+  </task>
+</profile>
