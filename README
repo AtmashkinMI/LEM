@@ -50,7 +50,7 @@
       $ cd lem-0.11.11/debian
       $ debuild -uc -us
       $ cd ../..
-      $ sudo apt-get install lem
+      $ sudo dpkg -i lem_0.11.11-1_i386.deb
       
       - Mandriva:
       $ mv LEM lem-0.11.11
