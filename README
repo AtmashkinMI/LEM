@@ -2,7 +2,7 @@
 
               Securely erases sensitive information in Linux
 
-           Copyright © 2011 Atmashkin M.I. <AtmashkinMI@gmail.com>
+          Copyright © 2011 Atmashkin M.I. <AtmashkinMI@gmail.com>
 
     ~ What is LEM?
 
@@ -26,11 +26,14 @@
 
     ~ How can I install LEM?
 
+      On my favorite Arch Linux you can install it from
+      AUR: https://aur.archlinux.org/packages.php?ID=54010
+
       If you trust me (you'd better don't) then you can
       download and install my packages:
-      - Arch Linux: http://dl.dropbox.com/u/...
-      - Debian/Ubuntu: http://dl.dropbox.com/u/...
-      - Mandriva: http://dl.dropbox.com/u/...
+      - Arch Linux: http://dl.dropbox.com/u/lem-0.11.11-1-i686.pkg.tar.xz
+      - Debian/Ubuntu: http://dl.dropbox.com/u/6245594/lem_0.11.11-1_i386.deb
+      - Mandriva: http://dl.dropbox.com/u/lem-0.11.11-1-mdv2011.0.i586.rpm
 
       If you don't (good choice) then you need to setup
       your GNU/Linux distribution for creating packages.
@@ -68,6 +71,20 @@
       $ make
       $ sudo make install
 
+    ~ Do I need to make any settings in my system for LEM?
+
+      You'd better do following settings:
+      - /etc/sudoers
+      Defaults !tty_tickets
+
+      - gksu-properties
+      Authentication mode - sudo, Grab mode - enable
+
+      - nautilus-actions-config-tool:
+      Unselect in Edit->Preferences->Runtime preferences:
+      * Create a root 'Nautilus-Actions' menu
+      * Add an 'About Nautilus-Actions' item in the Nautilus context menus
+
     ~ How can I configure LEM's appearance in my gtk-based desktop?
 
       Just look at the directory: /usr/share/LEM/gtk. You can change
@@ -78,4 +95,4 @@
       You can add translations to other languages, new
       *.xml profiles for applications, packages for your
       GNU/Linux distribution or you can find bugs in
-      existing code. Please contact me via email.
+      existing code. Please contact me via email!
