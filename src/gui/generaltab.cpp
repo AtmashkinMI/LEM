@@ -22,7 +22,7 @@ GeneralTab::GeneralTab(QWidget *parent)
     showTrayMessagesLabel->setBuddy(showTrayMessagesBox);
 
     shutdownAfterBox = new QSpinBox(this);
-    shutdownAfterBox->setSuffix(tr(" sec"));
+    shutdownAfterBox->setSuffix(tr(" sec."));
     shutdownAfterBox->setMaximum(INT_MAX);
 
     langBox = new QComboBox(this);

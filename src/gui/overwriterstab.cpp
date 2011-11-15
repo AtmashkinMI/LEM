@@ -31,7 +31,7 @@ OverwritersTab::OverwritersTab(QWidget *parent)
     initTableRow(10, QStringList() << tr("US NAVSO P-5239-26 (RLL)")                  << tr("3")  << tr("Last step"));
     initTableRow(11, QStringList() << tr("US NAVSO P-5239-26 (MFM)")                  << tr("3")  << tr("Last step"));
     initTableRow(12, QStringList() << tr("US Air Force AFSSI-5020")                   << tr("3")  << tr("Last step"));
-    initTableRow(13, QStringList() << tr("German BSI IT Baseline Protection Manual")  << tr("6")  << tr("Without verification"));
+    initTableRow(13, QStringList() << tr("German BSI IT BPM")                         << tr("6")  << tr("Without verification"));
     initTableRow(14, QStringList() << tr("US Department of Defense 5220.22-M (ECE)")  << tr("7")  << tr("Without verification"));
     initTableRow(15, QStringList() << tr("Canadian RCMP TSSIT OPS-II")                << tr("7")  << tr("Last step"));
     initTableRow(16, QStringList() << tr("German VSITR")                              << tr("7")  << tr("Without verification"));
@@ -96,64 +96,64 @@ void OverwritersTab::setInfoLabel()
 {
     switch (owrTable->selectedItems().first()->row()) {
         case 0:
-            infoLabel->setText("Your data is overwritten with '0x00' bytes through 1 pass without verification.");
+            infoLabel->setText(tr("Your data is overwritten with '0x00' bytes through 1 pass without verification."));
             break;
         case 1:
-            infoLabel->setText("Your data is overwritten with '0xFF' bytes through 1 pass without verification.");
+            infoLabel->setText(tr("Your data is overwritten with '0xFF' bytes through 1 pass without verification."));
             break;
         case 2:
-            infoLabel->setText("Your data is overwritten with random bytes through 1 pass without verification.");
+            infoLabel->setText(tr("Your data is overwritten with random bytes through 1 pass without verification."));
             break;
         case 3:
-            infoLabel->setText("Your data is overwritten with '0x00' bytes through 1 pass with verification.");
+            infoLabel->setText(tr("Your data is overwritten with '0x00' bytes through 1 pass with verification."));
             break;
         case 4:
-            infoLabel->setText("Your data is overwritten with random bytes through 1 pass with verification.");
+            infoLabel->setText(tr("Your data is overwritten with random bytes through 1 pass with verification."));
             break;
         case 5:
-            infoLabel->setText("Your data is overwritten through 2 passes without verification: first pass - with '0x00' bytes and the last pass - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 2 passes without verification: first pass - with '0x00' bytes and the last pass - with random bytes."));
             break;
         case 6:
-            infoLabel->setText("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0x00' bytes, second pass - with '0xFF' bytes and the last pass - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0x00' bytes, second pass - with '0xFF' bytes and the last pass - with random bytes."));
             break;
         case 7:
-            infoLabel->setText("Your data is overwritten through 3 passes with verification of last pass: first pass - with random bytes, then 2 passes - with certain byte and with its complement.");
+            infoLabel->setText(tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with random bytes, then 2 passes - with certain byte and with its complement."));
             break;
         case 8:
-            infoLabel->setText("Your data is overwritten through 3 passes with verification of all passes: first pass - with '0x00' bytes, second pass - with '0xFF' bytes and the last pass - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 3 passes with verification of all passes: first pass - with '0x00' bytes, second pass - with '0xFF' bytes and the last pass - with random bytes."));
             break;
         case 9:
-            infoLabel->setText("Your data is overwritten through 3 passes without verification: 2 passes - with certain byte and with its complement and the last pass - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 3 passes without verification: 2 passes - with certain byte and with its complement and the last pass - with random bytes."));
             break;
         case 10:
-            infoLabel->setText("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0xFF' bytes, second pass - with special RLL pattern and the last pass - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0xFF' bytes, second pass - with special RLL pattern and the last pass - with random bytes."));
             break;
         case 11:
-            infoLabel->setText("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0xFF' bytes, second pass - with special MFM pattern and the last pass - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0xFF' bytes, second pass - with special MFM pattern and the last pass - with random bytes."));
             break;
         case 12:
-            infoLabel->setText("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0x00' bytes, second pass - with '0xFF' bytes and the last pass - with certain byte.");
+            infoLabel->setText(tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0x00' bytes, second pass - with '0xFF' bytes and the last pass - with certain byte."));
             break;
         case 13:
-            infoLabel->setText("Your data is overwritten with certain bytes and with their complements through 6 passes without verification.");
+            infoLabel->setText(tr("Your data is overwritten with certain bytes and with their complements through 6 passes without verification."));
             break;
         case 14:
-            infoLabel->setText("Your data is overwritten through 7 passes without verification: 2 passes - with certain byte and with its complement, then 2 passes - with random bytes, then 2 passes - with certain byte and with its complement and the last pass - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 7 passes without verification: 2 passes - with certain byte and with its complement, then 2 passes - with random bytes, then 2 passes - with certain byte and with its complement and the last pass - with random bytes."));
             break;
         case 15:
-            infoLabel->setText("Your data is overwritten through 7 passes with verification of last pass: 6 alternating passes - with '0x00' bytes and '0xFF' bytes and the last pass - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 7 passes with verification of last pass: 6 alternating passes - with '0x00' bytes and '0xFF' bytes and the last pass - with random bytes."));
             break;
         case 16:
-            infoLabel->setText("Your data is overwritten through 7 passes without verification: 6 alternating passes - with '0x00' bytes and '0xFF' bytes and the last pass - with '0xAA' bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 7 passes without verification: 6 alternating passes - with '0x00' bytes and '0xFF' bytes and the last pass - with '0xAA' bytes."));
             break;
         case 17:
-            infoLabel->setText("Your data is overwritten through 7 passes without verification: first pass - with '0xFF' bytes, second pass - with '0x00' bytes, then 5 passes - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 7 passes without verification: first pass - with '0xFF' bytes, second pass - with '0x00' bytes, then 5 passes - with random bytes."));
             break;
         case 18:
-            infoLabel->setText("Your data is overwritten with random bytes through 33 passes without verification.");
+            infoLabel->setText(tr("Your data is overwritten with random bytes through 33 passes without verification."));
             break;
         case 19:
-            infoLabel->setText("Your data is overwritten through 35 passes without verification: 4 passes - with random bytes, then 27 passes - with special Gutmann's patterns, then 4 passes - with random bytes.");
+            infoLabel->setText(tr("Your data is overwritten through 35 passes without verification: 4 passes - with random bytes, then 27 passes - with special Gutmann's patterns, then 4 passes - with random bytes."));
             break;
     }
 
