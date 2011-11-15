@@ -909,7 +909,7 @@
         <location filename="../src/gui/mainwindow.cpp" line="1366"/>
         <location filename="../src/gui/mainwindow.cpp" line="1542"/>
         <source>Error!</source>
-        <translation type="unfinished">Ошибка!</translation>
+        <translation>Ошибка!</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="137"/>
@@ -919,7 +919,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="204"/>
         <source>&amp;Start</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Старт</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="205"/>
@@ -934,7 +934,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="210"/>
         <source>S&amp;top</source>
-        <translation type="unfinished"></translation>
+        <translation>С&amp;топ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="211"/>
@@ -949,7 +949,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="216"/>
         <source>&amp;Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Обновить</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="218"/>
@@ -959,7 +959,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="221"/>
         <source>E&amp;xit</source>
-        <translation type="unfinished"></translation>
+        <translation>В&amp;ыход</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="223"/>
@@ -969,7 +969,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="226"/>
         <source>&amp;Power off</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Выключить компьютер</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="228"/>
@@ -984,7 +984,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="231"/>
         <source>&amp;Settings...</source>
-        <translation type="unfinished">&amp;Настройки...</translation>
+        <translation>&amp;Настройки...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="232"/>
@@ -999,7 +999,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="236"/>
         <source>&amp;Contents...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Содержание...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="238"/>
@@ -1009,7 +1009,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="241"/>
         <source>About &amp;Qt...</source>
-        <translation type="unfinished"></translation>
+        <translation>О библиотеке &amp;Qt...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="242"/>
@@ -1019,7 +1019,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="245"/>
         <source>&amp;About %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;О программе %1...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="246"/>
@@ -1134,7 +1134,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>Wipe Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Списки для стирания</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="519"/>
