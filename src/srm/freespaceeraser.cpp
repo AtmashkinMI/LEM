@@ -1,3 +1,22 @@
+/*
+   Copyright (C) 2011 by Atmashkin M.I. All Rights Reserved.
+
+   This file is part of LEM.
+
+   LEM is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   LEM is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with LEM. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <errno.h>
 #include <fcntl.h>
 #include <utime.h>
@@ -14,6 +33,7 @@
 
 #include <QFileInfo>
 
+#include "systeminfo.hpp"
 #include "overwriters.hpp"
 #include "freespaceeraser.hpp"
 
@@ -76,11 +96,6 @@ QString FreeSpaceEraser::getLastError()
 QString FreeSpaceEraser::getFinishString()
 {
     return finishString;
-}
-
-QString FreeSpaceEraser::fromDouble(double num)
-{
-    return QString::number(num, 'f', 2);
 }
 
 QString FreeSpaceEraser::fileTypeStr(bool isDir)
@@ -720,9 +735,7 @@ void FreeSpaceEraser::run()
         sync();
 
         if (!stopped) {
-            double bytesErased = freeBlockSpace;
-            bytesErased -= totalCount;
-            bytesErased /= 1024;
+            qint64 bytesErased = freeBlockSpace - totalCount;
 
             double timeElapsed = totalClock.elapsed();
             if (timeElapsed <= 0) {
@@ -732,13 +745,12 @@ void FreeSpaceEraser::run()
 
             double avgSpeed = bytesErased;
             avgSpeed /= timeElapsed;
-
-            bytesErased /= 1024;
+            avgSpeed /= 1024;
 
             finishString += tr("<u>Block space:</u><br>"
                                "Average speed: <b>%1 KiB/s</b><br>"
-                               "Space erased: <b>%2 MiB</b><br>"
-                               "Time elapsed: <b>%3 seconds</b><br><br>").arg(fromDouble(avgSpeed), fromDouble(bytesErased), fromDouble(timeElapsed));
+                               "Space erased: <b>%2</b><br>"
+                               "Time elapsed: <b>%3 seconds</b><br><br>").arg(fromDouble(avgSpeed), fileSizeToStr(bytesErased), fromDouble(timeElapsed));
 
             emit finishErasePart();
         }

@@ -1,3 +1,22 @@
+/*
+   Copyright (C) 2011 by Atmashkin M.I. All Rights Reserved.
+
+   This file is part of LEM.
+
+   LEM is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   LEM is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with LEM. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <ftw.h>
 #include <fcntl.h>
 #include <dirent.h>
@@ -16,9 +35,15 @@
 #include <QFileIconProvider>
 
 #include "fileeraser.hpp"
+#include "systeminfo.hpp"
 #include "overwriters.hpp"
 
 #define ALIGN_BOUND 512
+
+static bool withRem;
+static bool withParent;
+static bool withSpecial;
+static bool withBlockDev;
 
 static qint64 totalSize;
 
@@ -38,13 +63,15 @@ static qint64 getFileSize(int fileDesc, const struct stat *fileStat)
     else {
         fileSize = fileStat->st_size;
 
-        if (fileStat->st_blksize > 0) {
-            if (qint64 blockRem = fileSize % fileStat->st_blksize) {
-                fileSize += fileStat->st_blksize - blockRem;
+        if (withRem) {
+            if (fileStat->st_blksize > 0) {
+                if (qint64 blockRem = fileSize % fileStat->st_blksize) {
+                    fileSize += fileStat->st_blksize - blockRem;
+                }
             }
-        }
-        else {
-            fileSize = -1;
+            else {
+                fileSize = -1;
+            }
         }
     }
 
@@ -55,13 +82,21 @@ static int processFile(const char *filePath, const struct stat *fileStat, int /*
 {
     int ret = 0;
 
-    int fileDesc = open(filePath, O_RDONLY);
-    if (fileDesc != -1) {
-        long flags;
-        if (ioctl(fileDesc, FS_IOC_GETFLAGS, &flags) != -1) {
-            flags &= ~FS_IMMUTABLE_FL;
-            if (ioctl(fileDesc, FS_IOC_SETFLAGS, &flags) == -1) {
-                ret = 5;
+    bool doOpen = S_ISBLK(fileStat->st_mode) || S_ISDIR(fileStat->st_mode) || S_ISREG(fileStat->st_mode);
+
+    int fileDesc = -1;
+    if (doOpen) {
+        fileDesc = open(filePath, O_RDONLY);
+    }
+
+    if (fileDesc != -1 || !doOpen) {
+        if (S_ISDIR(fileStat->st_mode) || S_ISREG(fileStat->st_mode)) {
+            long flags;
+            if (ioctl(fileDesc, FS_IOC_GETFLAGS, &flags) != -1) {
+                flags &= ~FS_IMMUTABLE_FL;
+                if (ioctl(fileDesc, FS_IOC_SETFLAGS, &flags) == -1) {
+                    ret = 5;
+                }
             }
         }
 
@@ -75,8 +110,23 @@ static int processFile(const char *filePath, const struct stat *fileStat, int /*
                 if (faccessat(AT_FDCWD, filePath, R_OK | W_OK, AT_SYMLINK_NOFOLLOW) != 0) {
                     ret = 1;
                 }
-                else {
-                    if (S_ISBLK(fileStat->st_mode) || S_ISREG(fileStat->st_mode)) {
+            }
+
+            if (withParent) {
+                if (ret == 0) {
+                    bool getSize = false;
+
+                    if (S_ISREG(fileStat->st_mode)) {
+                        getSize = true;
+                    }
+                    else if (S_ISBLK(fileStat->st_mode)) {
+                        getSize = withBlockDev;
+                    }
+                    else {
+                        getSize = withSpecial;
+                    }
+
+                    if (getSize) {
                         qint64 fileSize = getFileSize(fileDesc, fileStat);
                         if (fileSize < 0) {
                             ret = 2;
@@ -87,9 +137,12 @@ static int processFile(const char *filePath, const struct stat *fileStat, int /*
                     }
                 }
             }
+            else {
+                withParent = true;
+            }
         }
 
-        if (close(fileDesc) != 0) {
+        if (doOpen && close(fileDesc) != 0) {
             ret = 3;
         }
     }
@@ -165,11 +218,6 @@ QString FileEraser::getFinishString()
     return finishString;
 }
 
-QString FileEraser::fromDouble(double num)
-{
-    return QString::number(num, 'f', 2);
-}
-
 int FileEraser::blockDevType(const QString &fileName)
 {
     QString devName = QFileInfo(fileName).fileName();
@@ -210,11 +258,28 @@ int FileEraser::blockDevType(const QString &fileName)
     return -1;
 }
 
-qint64 FileEraser::getFileSize(const QString &fileName)
+qint64 FileEraser::getFileSize(const QString &fileName, bool withRem, bool withParent, bool withSpecial, bool withBlockDev)
 {
     ::totalSize = 0;
 
+    ::withRem = withRem;
+    ::withParent = withParent;
+    ::withSpecial = withSpecial;
+    ::withBlockDev = withBlockDev;
+
     return nftw(QFile::encodeName(fileName), processFile, 1, FTW_PHYS) != 0 ? -1 : ::totalSize;
+}
+
+bool FileEraser::isBlockDev(const QString &fileName)
+{
+    struct stat fileStat;
+
+    if (lstat(QFile::encodeName(fileName), &fileStat) == 0) {
+        return S_ISBLK(fileStat.st_mode);
+    }
+    else {
+        return false;
+    }
 }
 
 QString FileEraser::fileTypeStr(const QString &fileName)
@@ -333,6 +398,11 @@ void FileEraser::init(int owrType, const FilesList &filesList)
 
         ::totalSize = 0;
 
+        ::withRem = true;
+        ::withParent = true;
+        ::withSpecial = false;
+        ::withBlockDev = true;
+
         switch (nftw(fileName, processFile, 1, FTW_PHYS)) {
             case 0:
                 break;
@@ -363,7 +433,10 @@ void FileEraser::init(int owrType, const FilesList &filesList)
 
     stopped = false;
 
+    freedCount = 0;
+
     filesErased = 0;
+    filesDeleted = 0;
 
     totalCount = 0;
     totalProgress = 0;
@@ -474,6 +547,10 @@ void FileEraser::eraseFileName(const FileStruct &fileStruct)
     if (fileStruct.fileInfo.deleteAfter) {
         emit erasingFile(fileStruct.fileInfo.fileName, 1, S_ISDIR(fileStruct.fileStat.st_mode));
 
+        if (fileStruct.fileStat.st_size > 0) {
+            freedCount += fileStruct.fileStat.st_size;
+        }
+
         QString parentDirDec = QFileInfo(fileStruct.fileInfo.fileName).path();
         QByteArray parentDirEnc = QFile::encodeName(parentDirDec);
 
@@ -573,11 +650,11 @@ void FileEraser::eraseFileName(const FileStruct &fileStruct)
     }
 
     if (!stopped && errorString.isEmpty()) {
-        emit finishErasePart();
-
         if (fileStruct.fileInfo.deleteAfter) {
-            ++filesErased;
+            ++filesDeleted;
         }
+
+        emit finishErasePart();
     }
 }
 
@@ -585,6 +662,7 @@ void FileEraser::eraseFileBytes(const FileStruct &fileStruct)
 {
     int fileDesc = open(QFile::encodeName(fileStruct.fileInfo.fileName), O_RDWR | O_SYNC | O_DIRECT);
     if (fileDesc != -1) {
+        ::withRem = true;
         fileSize = ::getFileSize(fileDesc, &fileStruct.fileStat);
         if (fileSize < 0) {
             fileError(tr("Can't get size of %1 '%2'!"), fileStruct);
@@ -658,13 +736,13 @@ void FileEraser::eraseFileBytes(const FileStruct &fileStruct)
     }
 
     if (!stopped && errorString.isEmpty()) {
+        ++filesErased;
+
         if (S_ISREG(fileStruct.fileStat.st_mode)) {
             eraseFileName(fileStruct);
         }
         else {
             emit finishErasePart();
-
-            ++filesErased;
         }
     }
 }
@@ -675,9 +753,8 @@ void FileEraser::eraseDir(const FileStruct &fileStruct)
     if (dirName == "." || dirName == "..") {
         return;
     }
-    else {
-        emit erasingFile(fileStruct.fileInfo.fileName, 0, true);
-    }
+
+    emit erasingFile(fileStruct.fileInfo.fileName, 0, true);
 
     QByteArray baseName = QFile::encodeName(fileStruct.fileInfo.fileName);
 
@@ -760,13 +837,11 @@ void FileEraser::run()
     }
 
     if (!stopped && errorString.isEmpty()) {
-        double bytesErased = totalSize;
-        bytesErased /= 1024;
-        bytesErased /= 1024;
-
         finishString = tr("<b><u>Erasing statistics:</u></b><br><br>"
                           "Files deleted: <b>%1 files</b><br>"
-                          "Space erased: <b>%2 MiB</b><br>").arg(QString::number(filesErased), fromDouble(bytesErased));
+                          "Files overwritten: <b>%2 files</b><br>"
+                          "Bytes deleted: <b>%3</b><br>"
+                          "Bytes overwritten: <b>%4</b><br>").arg(QString::number(filesDeleted), QString::number(filesErased), fileSizeToStr(freedCount), fileSizeToStr(totalSize));
     }
 
     sync();

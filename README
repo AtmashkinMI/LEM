@@ -75,7 +75,7 @@
 
       You'd better do following settings:
       - /etc/sudoers
-      Defaults !tty_tickets
+      Defaults !env_reset,!tty_tickets
 
       - gksu-properties
       Authentication mode - sudo, Grab mode - enable

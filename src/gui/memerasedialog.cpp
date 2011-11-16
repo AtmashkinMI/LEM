@@ -1,8 +1,29 @@
+/*
+   Copyright (C) 2011 by Atmashkin M.I. All Rights Reserved.
+
+   This file is part of LEM.
+
+   LEM is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   LEM is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with LEM. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <QtGui>
 
 #include <linux/oom.h>
 
 #include "memerasedialog.hpp"
+
+#include "../srm/systeminfo.hpp"
 
 #define AVAILABLE_MEM_PART 0.885
 
@@ -79,11 +100,6 @@ void MemEraseDialog::keyPressEvent(QKeyEvent *event)
     if (event->key() == Qt::Key_Escape) {
         close();
     }
-}
-
-QString MemEraseDialog::fromDouble(double num)
-{
-    return QString::number(num, 'f', 2);
 }
 
 QString MemEraseDialog::getErrorString()
@@ -243,10 +259,10 @@ void MemEraseDialog::processExit()
             }
             timeElapsed /= 1000;
 
-            double memErased = bytesCount;
-            memErased /= 1024 * 1024;
-
-            double avgSpeed = memErased / timeElapsed;
+            double avgSpeed = bytesCount;
+            avgSpeed /= timeElapsed;
+            avgSpeed /= 1024;
+            avgSpeed /= 1024;
 
             QString exitType;
             if (eraseProc->exitStatus() == QProcess::NormalExit) {
@@ -263,9 +279,9 @@ void MemEraseDialog::processExit()
 
             finishString = tr("<b><u>Erasing statistics:</u></b><br><br>"
                               "Average speed: <b>%1 MiB/s</b><br>"
-                              "Memory erased: <b>%2 MiB</b><br>"
+                              "Memory erased: <b>%2</b><br>"
                               "Time elapsed: <b>%3 seconds</b><br>"
-                              "Exit type: <b>%4</b>").arg(fromDouble(avgSpeed), fromDouble(memErased), fromDouble(timeElapsed), exitType);
+                              "Exit type: <b>%4</b>").arg(fromDouble(avgSpeed), fileSizeToStr(bytesCount), fromDouble(timeElapsed), exitType);
 
             progressBar->setValue(100);
             progressBar->repaint();

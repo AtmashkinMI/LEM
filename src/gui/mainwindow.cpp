@@ -1,3 +1,22 @@
+/*
+   Copyright (C) 2011 by Atmashkin M.I. All Rights Reserved.
+
+   This file is part of LEM.
+
+   LEM is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   LEM is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with LEM. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <QtGui>
 #include <QDomDocument>
 
@@ -58,8 +77,8 @@ MainWindow::MainWindow(const QString &currentUserName)
 
     setCentralWidget(splitter);
 
-    resize(800, 500);
-    splitter->setSizes(QList<int>() << 250 << width() - 250);
+    resize(970, 580);
+    splitter->setSizes(QList<int>() << 280 << width() - 280);
 
     memEraseDialog = new MemEraseDialog;
     fileEraseDialog = new FileEraseDialog;
@@ -1284,8 +1303,12 @@ void MainWindow::clearFilesList(FilesList *filesList)
 {
     QList<int> toRemove;
 
+    QFileInfo fileCheck;
+
     for (int i = 0; i < filesList->size(); ++i) {
-        if (FileEraseDialog::getFileSize(filesList->at(i).fileName) < 0) {
+        fileCheck.setFile(filesList->at(i).fileName);
+
+        if (!fileCheck.exists() && !fileCheck.isSymLink()) {
             toRemove << i - toRemove.size();
         }
     }
@@ -1430,6 +1453,8 @@ void MainWindow::dialogFinished()
 
     reportString += finishString;
 
+    freedCount += freedCurrent;
+
     if (trayIcon && settingsDialog->getShowTrayMessages()) {
         trayIcon->showMessage(tr("Success!"), tr("Finished task: %1").arg(taskName), QSystemTrayIcon::Information);
     }
@@ -1492,6 +1517,20 @@ void MainWindow::processTask()
 
     if (trayIcon) {
         trayIcon->setToolTip(tr("Current task: %1").arg(taskName));
+    }
+
+    freedCurrent = 0;
+
+    if (tasks[selectedTask].taskType == Files || tasks[selectedTask].taskType == Custom) {
+        FilesList *filesList = &tasks[selectedTask].filesList;
+
+        for (int i = 0; i < filesList->size(); ++i) {
+            qint64 fileSize = FileEraseDialog::getFileSize(filesList->at(i).fileName, false, filesList->at(i).deleteAfter, true, false);
+
+            if (fileSize >= 0) {
+                freedCurrent += fileSize;
+            }
+        }
     }
 
     switch (tasks[selectedTask].taskType) {
@@ -1558,7 +1597,9 @@ void MainWindow::allTasksFinished()
     if (settingsDialog->getShowStat()) {
         QString endTime = QDateTime::currentDateTime().toString();
         stringToHTML(endTime);
-        reportString += tr("<HR>End time: <b>%1</b><HR>").arg(endTime);
+
+        reportString += tr("<HR>Space freed: <b>%1</b><br>"
+                            "End time: <b>%2</b><HR>").arg(fileSizeToStr(freedCount), endTime);
 
         showNormalReport = true;
 
@@ -1582,6 +1623,8 @@ void MainWindow::allTasksFinished()
 
 void MainWindow::startErasure()
 {
+    freedCount = 0;
+
     currentTaskType = -1;
 
     showErrorReport = false;

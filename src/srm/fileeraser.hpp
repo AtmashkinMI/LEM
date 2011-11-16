@@ -1,3 +1,22 @@
+/*
+   Copyright (C) 2011 by Atmashkin M.I. All Rights Reserved.
+
+   This file is part of LEM.
+
+   LEM is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   LEM is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with LEM. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #ifndef FILEERASER_HPP
 #define FILEERASER_HPP
 
@@ -28,13 +47,12 @@ public:
     QString getLastError();
     QString getFinishString();
 
-    QString fromDouble(double num);
-
     void init(int owrType, const FilesList &filesList);
 
-    static qint64 getFileSize(const QString &fileName);
+    static bool isBlockDev(const QString &fileName);
     static QIcon fileTypeIcon(const QString &fileName);
     static QString fileTypeStr(const QString &fileName);
+    static qint64 getFileSize(const QString &fileName, bool withRem, bool withParent, bool withSpecial, bool withBlockDev);
 
 signals:
     void finishErasePart();
@@ -80,7 +98,10 @@ private:
     qint64 totalCount;
     int totalProgress;
 
+    qint64 freedCount;
+
     qint64 filesErased;
+    qint64 filesDeleted;
 
     QTime roundClock;
     QTime progressClock;

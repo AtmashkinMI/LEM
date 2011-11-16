@@ -1,9 +1,30 @@
+/*
+   Copyright (C) 2011 by Atmashkin M.I. All Rights Reserved.
+
+   This file is part of LEM.
+
+   LEM is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   LEM is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with LEM. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <QtGui>
 
 #include "memerasedialog.hpp"
 #include "fileerasedialog.hpp"
 #include "descriptionwidget.hpp"
 #include "freespaceerasedialog.hpp"
+
+#include "../srm/systeminfo.hpp"
 
 class FileTreeWidgetItem : public QTreeWidgetItem
 {
@@ -95,49 +116,6 @@ DescriptionWidget::DescriptionWidget(TaskMap &tasks, QWidget *parent)
     middleFont.setPointSize(12);
 }
 
-QString DescriptionWidget::fromDouble(double num)
-{
-    return QString::number(num, 'f', 2);
-}
-
-QString DescriptionWidget::fileSizeToStr(qint64 fileSize)
-{
-    if (fileSize < 1024) {
-        return tr("%1 B").arg(QString::number(fileSize));
-    }
-
-    double fileSizeNew = fileSize;
-
-    fileSizeNew /= 1024;
-    if (fileSizeNew < 1024) {
-        return tr("%1 KiB").arg(fromDouble(fileSizeNew));
-    }
-
-    fileSizeNew /= 1024;
-    if (fileSizeNew < 1024) {
-        return tr("%1 MiB").arg(fromDouble(fileSizeNew));
-    }
-
-    fileSizeNew /= 1024;
-    if (fileSizeNew < 1024) {
-        return tr("%1 GiB").arg(fromDouble(fileSizeNew));
-    }
-
-    fileSizeNew /= 1024;
-    if (fileSizeNew < 1024) {
-        return tr("%1 TiB").arg(fromDouble(fileSizeNew));
-    }
-
-    fileSizeNew /= 1024;
-    if (fileSizeNew < 1024) {
-        return tr("%1 PiB").arg(fromDouble(fileSizeNew));
-    }
-
-    fileSizeNew /= 1024;
-
-    return tr("%1 EiB").arg(fromDouble(fileSizeNew));
-}
-
 void DescriptionWidget::createRamTree()
 {
     filesTree->setColumnCount(2);
@@ -174,7 +152,13 @@ void DescriptionWidget::createFilesTree()
     FilesList *filesList = &tasks[currentTask].filesList;
 
     for (int i = 0; i < filesList->size(); ++i) {
-        qint64 fileSize = FileEraseDialog::getFileSize(filesList->at(i).fileName);
+        qint64 fileSize;
+        if (tasks[currentTask].taskType == Files) {
+            fileSize = FileEraseDialog::getFileSize(filesList->at(i).fileName, false, filesList->at(i).deleteAfter, true, false);
+        }
+        else {
+            fileSize = FileEraseDialog::getFileSize(filesList->at(i).fileName, false, true, false, true);
+        }
 
         if (fileSize >= 0) {
             totalSize += fileSize;
@@ -244,14 +228,19 @@ void DescriptionWidget::fillCustomTree()
     FilesList *filesList = &tasks[currentTask].filesList;
 
     for (int i = 0; i < filesList->size(); ++i) {
-        qint64 fileSize = FileEraseDialog::getFileSize(filesList->at(i).fileName);
+        qint64 fileSize = FileEraseDialog::getFileSize(filesList->at(i).fileName, false, filesList->at(i).deleteAfter, true, false);
 
         if (fileSize >= 0) {
             totalSize += fileSize;
 
             FileTreeWidgetItem *fileItem = new FileTreeWidgetItem(filesTree, QStringList() << filesList->at(i).fileName << FileEraseDialog::fileTypeStr(filesList->at(i).fileName) << fileSizeToStr(fileSize));
             fileItem->setIcon(0, FileEraseDialog::fileTypeIcon(filesList->at(i).fileName));
-            fileItem->setCheckState(3, filesList->at(i).deleteAfter ? Qt::Checked : Qt::Unchecked);
+            if (!FileEraseDialog::isBlockDev(filesList->at(i).fileName)) {
+                fileItem->setCheckState(3, filesList->at(i).deleteAfter ? Qt::Checked : Qt::Unchecked);
+            }
+            else {
+                fileItem->setText(3, tr("no"));
+            }
         }
         else {
             toRemove << i - toRemove.size();
@@ -327,14 +316,37 @@ void DescriptionWidget::treeCheckStateChanged(QTreeWidgetItem *item, int column)
         return;
     }
 
+    if (item->data(3, Qt::CheckStateRole) == QVariant()) {
+        return;
+    }
+
+    qint64 totalSize = 0;
+
     FilesList &filesList = tasks[currentTask].filesList;
 
     for (int i = 0; i < filesList.size(); ++i) {
-        if (filesList.at(i).fileName == item->text(0)) {
+        bool match = filesList.at(i).fileName == item->text(0);
+        if (match) {
             filesList[i].deleteAfter = item->checkState(3) == Qt::Checked;
-            break;
+        }
+
+        qint64 fileSize = FileEraseDialog::getFileSize(filesList.at(i).fileName, false, filesList.at(i).deleteAfter, true, false);
+
+        if (fileSize >= 0) {
+            totalSize += fileSize;
+        }
+
+        if (match) {
+            if (fileSize >= 0) {
+                item->setText(2, fileSizeToStr(fileSize));
+            }
+            else {
+                item->setText(2, tr("deleted"));
+            }
         }
     }
+
+    totalSizeLabel->setText(tr("<u>Total size:</u> <b>%1</b>").arg(fileSizeToStr(totalSize)));
 }
 
 void DescriptionWidget::addFilesToCustomTree()
@@ -344,18 +356,17 @@ void DescriptionWidget::addFilesToCustomTree()
     QFileDialog openFilesDialog(this, tr("Select files you want to erase - %1").arg(qApp->applicationName()), QDir::rootPath());
     openFilesDialog.setViewMode(QFileDialog::List);
     openFilesDialog.setAcceptMode(QFileDialog::AcceptSave);
-    openFilesDialog.setFileMode(QFileDialog::ExistingFiles);
+    openFilesDialog.setFileMode(QFileDialog::AnyFile);
     openFilesDialog.setOption(QFileDialog::DontUseNativeDialog);
     openFilesDialog.setOption(QFileDialog::DontResolveSymlinks);
     openFilesDialog.setOption(QFileDialog::DontConfirmOverwrite);
-    openFilesDialog.setFilter(QDir::Dirs | QDir::Files | QDir::Hidden | QDir::NoDotAndDotDot);
+    openFilesDialog.setFilter(QDir::Dirs | QDir::Files | QDir::System | QDir::Hidden | QDir::NoDotAndDotDot);
 
     QStringList filesToAdd;
     if (openFilesDialog.exec()) {
         filesToAdd = openFilesDialog.selectedFiles();
 
         FileInfo fileInfo;
-        fileInfo.deleteAfter = true;
 
         for (int i = 0; i < filesToAdd.size(); ++i) {
             bool inList = false;
@@ -369,6 +380,7 @@ void DescriptionWidget::addFilesToCustomTree()
 
             if (!inList) {
                 fileInfo.fileName = filesToAdd.at(i);
+                fileInfo.deleteAfter = !FileEraseDialog::isBlockDev(fileInfo.fileName);
                 filesList->append(fileInfo);
             }
         }
@@ -388,7 +400,7 @@ void DescriptionWidget::addDirsToCustomTree()
     openDirsDialog.setOption(QFileDialog::DontUseNativeDialog);
     openDirsDialog.setOption(QFileDialog::DontResolveSymlinks);
     openDirsDialog.setOption(QFileDialog::DontConfirmOverwrite);
-    openDirsDialog.setFilter(QDir::Dirs | QDir::NoSymLinks | QDir::Hidden | QDir::NoDotAndDotDot);
+    openDirsDialog.setFilter(QDir::Dirs | QDir::Hidden | QDir::NoDotAndDotDot);
 
     QStringList dirsToAdd;
     if (openDirsDialog.exec()) {
