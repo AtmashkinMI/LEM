@@ -356,7 +356,7 @@
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="294"/>
         <source>floppy disk</source>
-        <translation>дискета</translation>
+        <translation>гибкий диск</translation>
     </message>
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="296"/>
@@ -1096,7 +1096,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="521"/>
         <source>You may erase this %1</source>
-        <translation>Вы можете стереть: %1</translation>
+        <translation>Вы можете стереть этот %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="531"/>
