@@ -396,7 +396,7 @@
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="310"/>
         <source>block device</source>
-        <translation>блочное устройство</translation>
+        <translation>блочный диск</translation>
     </message>
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="313"/>
@@ -416,7 +416,7 @@
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="319"/>
         <source>symbolic link</source>
-        <translation>символическая ссылка</translation>
+        <translation>ярлык</translation>
     </message>
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="321"/>
