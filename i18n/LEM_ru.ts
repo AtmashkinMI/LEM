@@ -401,7 +401,7 @@
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="313"/>
         <source>character device</source>
-        <translation>символьное устройство</translation>
+        <translation>символьный поток</translation>
     </message>
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="315"/>
