@@ -41,6 +41,16 @@ Overwriter::Verification USDoDEOverwriter::verificationType()
     return No;
 }
 
+QString USDoDEOverwriter::getName()
+{
+    return QObject::tr("US Department of Defense 5220.22-M (E)");
+}
+
+QString USDoDEOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 3 passes without verification: 2 passes - with certain byte and with its complement and the last pass - with random bytes.");
+}
+
 bool USDoDEOverwriter::isConstantRound(int round)
 {
     return round == 2 ? false : true;

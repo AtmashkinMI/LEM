@@ -26,3 +26,14 @@ Overwriter::Overwriter()
 Overwriter::~Overwriter()
 {
 }
+
+QString Overwriter::verificationName(Verification type)
+{
+    switch (type) {
+        case No:        return QObject::tr("Without verification");
+        case LastRound: return QObject::tr("Last step");
+        case AllRouns:  return QObject::tr("All steps");
+    }
+
+    return QString();
+}

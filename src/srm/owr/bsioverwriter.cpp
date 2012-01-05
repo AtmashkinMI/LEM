@@ -43,6 +43,16 @@ Overwriter::Verification BSIOverwriter::verificationType()
     return No;
 }
 
+QString BSIOverwriter::getName()
+{
+    return QObject::tr("German BSI IT BPM");
+}
+
+QString BSIOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten with certain bytes and with their complements through 6 passes without verification.");
+}
+
 bool BSIOverwriter::isConstantRound(int round)
 {
     Q_UNUSED(round)

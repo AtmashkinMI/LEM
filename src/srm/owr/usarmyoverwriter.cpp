@@ -41,6 +41,16 @@ Overwriter::Verification USArmyOverwriter::verificationType()
     return LastRound;
 }
 
+QString USArmyOverwriter::getName()
+{
+    return QObject::tr("US Army AR380-19");
+}
+
+QString USArmyOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with random bytes, then 2 passes - with certain byte and with its complement.");
+}
+
 bool USArmyOverwriter::isConstantRound(int round)
 {
     return round == 0 ? false : true;

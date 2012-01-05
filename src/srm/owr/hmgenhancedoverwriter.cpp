@@ -41,6 +41,16 @@ Overwriter::Verification HMGEnhancedOverwriter::verificationType()
     return LastRound;
 }
 
+QString HMGEnhancedOverwriter::getName()
+{
+    return QObject::tr("British HMG IS5 (Enhanced)");
+}
+
+QString HMGEnhancedOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0x00' bytes, second pass - with '0xFF' bytes and the last pass - with random bytes.");
+}
+
 bool HMGEnhancedOverwriter::isConstantRound(int round)
 {
    return round == 2 ? false : true;

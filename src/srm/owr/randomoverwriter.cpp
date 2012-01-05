@@ -41,6 +41,16 @@ Overwriter::Verification RandomOverwriter::verificationType()
     return No;
 }
 
+QString RandomOverwriter::getName()
+{
+    return QObject::tr("Overwrite with random bytes");
+}
+
+QString RandomOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten with random bytes through 1 pass without verification.");
+}
+
 bool RandomOverwriter::isConstantRound(int round)
 {
     Q_UNUSED(round)

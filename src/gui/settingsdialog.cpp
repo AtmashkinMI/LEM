@@ -174,7 +174,7 @@ int SettingsDialog::getOwrType()
 
     int owrType = settings->value("erasing_schemes/overwriter_type", 0).toInt();
 
-    if (owrType < 0 || owrType > 19) {
+    if (owrType < 0 || owrType >= OVERWRITERS_COUNT) {
         owrType = 0;
     }
 

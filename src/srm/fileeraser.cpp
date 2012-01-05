@@ -616,6 +616,11 @@ void FileEraser::eraseFileName(const FileStruct &fileStruct)
                         break;
                     }
 
+                    if (fdatasync(parentDirDesc) != 0) {
+                        errorString = tr("Can't commit zeroizing of attributes in directory '%1'!").arg(parentDirDec);
+                        break;
+                    }
+
                     if (!S_ISDIR(newStruct.fileStat.st_mode)) {
                         if (unlink(newPath) != 0) {
                             fileError(tr("Can't unlink %1 '%2'!"), newStruct);
@@ -836,6 +841,8 @@ void FileEraser::run()
         }
     }
 
+    sync();
+
     if (!stopped && errorString.isEmpty()) {
         finishString = tr("<b><u>Erasing statistics:</u></b><br><br>"
                           "Files deleted: <b>%1 files</b><br>"
@@ -843,6 +850,4 @@ void FileEraser::run()
                           "Bytes deleted: <b>%3</b><br>"
                           "Bytes overwritten: <b>%4</b><br>").arg(QString::number(filesDeleted), QString::number(filesErased), fileSizeToStr(freedCount), fileSizeToStr(totalSize));
     }
-
-    sync();
 }

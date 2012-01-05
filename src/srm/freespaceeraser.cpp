@@ -584,16 +584,30 @@ void FreeSpaceEraser::removeTmpFile(const QByteArray &tmpFile, bool isDir)
     }
 
     if (!isDir) {
+        if (fdatasync(tmpDirDesc) != 0) {
+            errorString = tr("Can't commit zeroizing of attributes in temporary directory!");
+            return;
+        }
+
         if (unlink(tmpFile) != 0) {
             errorString = tr("Can't unlink temporary %1!").arg(fileTypeStr(isDir));
             return;
         }
+
+        if (fdatasync(tmpDirDesc) != 0) {
+            errorString = tr("Can't commit deleting in temporary directory!");
+            return;
+        }
     }
     else {
+        sync();
+
         if (rmdir(tmpFile) != 0) {
             errorString = tr("Can't remove temporary %1!").arg(fileTypeStr(isDir));
             return;
         }
+
+        sync();
     }
 }
 
@@ -602,6 +616,12 @@ void FreeSpaceEraser::run()
     tmpDirPtr = opendir(tmpDirPath);
     if (tmpDirPtr == 0) {
         errorString = tr("Can't open temporary directory!");
+        stopped = true;
+    }
+
+    tmpDirDesc = dirfd(tmpDirPtr);
+    if (tmpDirDesc == -1) {
+        errorString = tr("Can't get descriptor of temporary directory!");
         stopped = true;
     }
 
@@ -723,6 +743,12 @@ void FreeSpaceEraser::run()
                 stopped = true;
                 break;
             }
+
+            if (fdatasync(bigFileDesc) != 0) {
+                errorString = tr("Can't synchronize truncation of big file!");
+                stopped = true;
+                break;
+            }
         }
 
         if (bigFileDesc != -1) {
@@ -756,10 +782,14 @@ void FreeSpaceEraser::run()
         }
     }
 
+    QString errorSave = errorString;
+
     if (errorString.isEmpty()) {
         emit updateType(3);
     }
     else {
+        errorString.clear();
+
         emit updateType(4);
     }
 
@@ -784,6 +814,8 @@ void FreeSpaceEraser::run()
 
             removeTmpFile(tmpFilePath, false);
             if (!errorString.isEmpty()) {
+                sync();
+
                 return;
             }
 
@@ -792,6 +824,8 @@ void FreeSpaceEraser::run()
 
         if (closedir(tmpDirPtr) != 0) {
             errorString = tr("Can't close temporary directory!");
+            sync();
+
             return;
         }
     }
@@ -801,6 +835,8 @@ void FreeSpaceEraser::run()
 
     removeTmpFile(tmpDirPath, true);
     if (!errorString.isEmpty()) {
+        sync();
+
         return;
     }
 
@@ -808,7 +844,9 @@ void FreeSpaceEraser::run()
 
     filesCount = 0;
 
-    sync();
+    if (!errorSave.isEmpty()) {
+        errorString = errorSave;
+    }
 
     if (!stopped) {
         double timeElapsed = totalClock.elapsed();

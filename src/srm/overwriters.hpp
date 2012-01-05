@@ -41,6 +41,8 @@
 #include "owr/pfitzneroverwriter.hpp"
 #include "owr/gutmannoverwriter.hpp"
 
+#define OVERWRITERS_COUNT 20
+
 Overwriter *intToOwr(int owrType);
 
 #endif // OVERWRITERS_HPP

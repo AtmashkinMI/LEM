@@ -41,6 +41,16 @@ Overwriter::Verification VSITROverwriter::verificationType()
     return No;
 }
 
+QString VSITROverwriter::getName()
+{
+    return QObject::tr("German VSITR");
+}
+
+QString VSITROverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 7 passes without verification: 6 alternating passes - with '0x00' bytes and '0xFF' bytes and the last pass - with '0xAA' bytes.");
+}
+
 bool VSITROverwriter::isConstantRound(int round)
 {
     Q_UNUSED(round)

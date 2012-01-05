@@ -41,6 +41,16 @@ Overwriter::Verification ISMOverwriter::verificationType()
     return LastRound;
 }
 
+QString ISMOverwriter::getName()
+{
+    return QObject::tr("Australian & New Zealand ISM - 2010");
+}
+
+QString ISMOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten with random bytes through 1 pass with verification.");
+}
+
 bool ISMOverwriter::isConstantRound(int round)
 {
     Q_UNUSED(round)

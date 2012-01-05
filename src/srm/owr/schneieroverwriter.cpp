@@ -41,6 +41,16 @@ Overwriter::Verification SchneierOverwriter::verificationType()
     return No;
 }
 
+QString SchneierOverwriter::getName()
+{
+    return QObject::tr("Bruce Schneier's method");
+}
+
+QString SchneierOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 7 passes without verification: first pass - with '0xFF' bytes, second pass - with '0x00' bytes, then 5 passes - with random bytes.");
+}
+
 bool SchneierOverwriter::isConstantRound(int round)
 {
     return round >= 2 ? false : true;

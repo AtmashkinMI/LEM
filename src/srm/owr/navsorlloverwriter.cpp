@@ -43,6 +43,16 @@ Overwriter::Verification NAVSORLLOverwriter::verificationType()
     return LastRound;
 }
 
+QString NAVSORLLOverwriter::getName()
+{
+    return QObject::tr("US NAVSO P-5239-26 (RLL)");
+}
+
+QString NAVSORLLOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0xFF' bytes, second pass - with special RLL pattern and the last pass - with random bytes.");
+}
+
 bool NAVSORLLOverwriter::isConstantRound(int round)
 {
     return round == 2 ? false : true;

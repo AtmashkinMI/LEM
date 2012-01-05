@@ -440,7 +440,7 @@
     </message>
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="393"/>
-        <location filename="../src/srm/fileeraser.cpp" line="787"/>
+        <location filename="../src/srm/fileeraser.cpp" line="792"/>
         <source>Can&apos;t get information about file &apos;%1&apos;!</source>
         <translation>Невозможно получить информацию о файле &apos;%1&apos;!</translation>
     </message>
@@ -451,21 +451,21 @@
     </message>
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="413"/>
-        <location filename="../src/srm/fileeraser.cpp" line="668"/>
+        <location filename="../src/srm/fileeraser.cpp" line="673"/>
         <source>Can&apos;t get size of %1 &apos;%2&apos;!</source>
         <translation>Невозможно получить размер: %1 &apos;%2&apos;!</translation>
     </message>
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="416"/>
-        <location filename="../src/srm/fileeraser.cpp" line="731"/>
-        <location filename="../src/srm/fileeraser.cpp" line="798"/>
+        <location filename="../src/srm/fileeraser.cpp" line="736"/>
+        <location filename="../src/srm/fileeraser.cpp" line="803"/>
         <source>Can&apos;t close %1 &apos;%2&apos;!</source>
         <translation>Невозможно закрыть: %1 &apos;%2&apos;!</translation>
     </message>
     <message>
         <location filename="../src/srm/fileeraser.cpp" line="419"/>
-        <location filename="../src/srm/fileeraser.cpp" line="735"/>
-        <location filename="../src/srm/fileeraser.cpp" line="764"/>
+        <location filename="../src/srm/fileeraser.cpp" line="740"/>
+        <location filename="../src/srm/fileeraser.cpp" line="769"/>
         <source>Can&apos;t open %1 &apos;%2&apos;!</source>
         <translation>Невозможно открыть: %1 &apos;%2&apos;!</translation>
     </message>
@@ -525,47 +525,52 @@
         <translation>Невозможно занулить времена доступа и модификации: %1 &apos;%2&apos;!</translation>
     </message>
     <message>
-        <location filename="../src/srm/fileeraser.cpp" line="621"/>
+        <location filename="../src/srm/fileeraser.cpp" line="620"/>
+        <source>Can&apos;t commit zeroizing of attributes in directory &apos;%1&apos;!</source>
+        <translation>Невозможно совершить зануление атрибутов в каталоге &apos;%1&apos;!</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/fileeraser.cpp" line="626"/>
         <source>Can&apos;t unlink %1 &apos;%2&apos;!</source>
         <translation>Невозможно разлинковать: %1 &apos;%2&apos;!</translation>
     </message>
     <message>
-        <location filename="../src/srm/fileeraser.cpp" line="627"/>
+        <location filename="../src/srm/fileeraser.cpp" line="632"/>
         <source>Can&apos;t remove %1 &apos;%2&apos;!</source>
         <translation>Невозможно удалить: %1 &apos;%2&apos;!</translation>
     </message>
     <message>
-        <location filename="../src/srm/fileeraser.cpp" line="633"/>
+        <location filename="../src/srm/fileeraser.cpp" line="638"/>
         <source>Can&apos;t commit deleting in directory &apos;%1&apos;!</source>
         <translation>Невозможно совершить удаление в каталоге &apos;%1&apos;!</translation>
     </message>
     <message>
-        <location filename="../src/srm/fileeraser.cpp" line="640"/>
+        <location filename="../src/srm/fileeraser.cpp" line="645"/>
         <source>Can&apos;t get descriptor of directory &apos;%1&apos;!</source>
         <translation>Невозможно получить дескриптор каталога &apos;%1&apos;!</translation>
     </message>
     <message>
-        <location filename="../src/srm/fileeraser.cpp" line="644"/>
+        <location filename="../src/srm/fileeraser.cpp" line="649"/>
         <source>Can&apos;t close directory &apos;%1&apos;!</source>
         <translation>Невозможно закрыть каталог &apos;%1&apos;!</translation>
     </message>
     <message>
-        <location filename="../src/srm/fileeraser.cpp" line="648"/>
+        <location filename="../src/srm/fileeraser.cpp" line="653"/>
         <source>Can&apos;t open directory &apos;%1&apos;!</source>
         <translation>Невозможно открыть каталог &apos;%1&apos;!</translation>
     </message>
     <message>
-        <location filename="../src/srm/fileeraser.cpp" line="677"/>
+        <location filename="../src/srm/fileeraser.cpp" line="682"/>
         <source>Can&apos;t change %1 &apos;%2&apos; offset for new round!</source>
         <translation>Невозможно изменить смещение для нового раунда: %1 &apos;%2&apos;!</translation>
     </message>
     <message>
-        <location filename="../src/srm/fileeraser.cpp" line="724"/>
+        <location filename="../src/srm/fileeraser.cpp" line="729"/>
         <source>Can&apos;t synchronize the data of %1 &apos;%2&apos;!</source>
         <translation>Невозможно синхронизировать данные: %1 &apos;%2&apos;!</translation>
     </message>
     <message>
-        <location filename="../src/srm/fileeraser.cpp" line="840"/>
+        <location filename="../src/srm/fileeraser.cpp" line="847"/>
         <source>&lt;b&gt;&lt;u&gt;Erasing statistics:&lt;/u&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Files deleted: &lt;b&gt;%1 files&lt;/b&gt;&lt;br&gt;Files overwritten: &lt;b&gt;%2 files&lt;/b&gt;&lt;br&gt;Bytes deleted: &lt;b&gt;%3&lt;/b&gt;&lt;br&gt;Bytes overwritten: &lt;b&gt;%4&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;&lt;u&gt;Статистика стирания:&lt;/u&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Файлов удалено: &lt;b&gt;%1 файлов&lt;/b&gt;&lt;br&gt;Файлов перезаписано: &lt;b&gt;%2 файлов&lt;/b&gt;&lt;br&gt;Байтов удалено: &lt;b&gt;%3&lt;/b&gt;&lt;br&gt;Байтов перезаписано: &lt;b&gt;%4&lt;/b&gt;&lt;br&gt;</translation>
     </message>
@@ -756,56 +761,76 @@
     </message>
     <message>
         <location filename="../src/srm/freespaceeraser.cpp" line="588"/>
+        <source>Can&apos;t commit zeroizing of attributes in temporary directory!</source>
+        <translation>Невозможно совершить зануление атрибутов во временном каталоге!</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/freespaceeraser.cpp" line="593"/>
         <source>Can&apos;t unlink temporary %1!</source>
         <translation>Невозможно разлинковать: временный %1!</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="594"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="598"/>
+        <source>Can&apos;t commit deleting in temporary directory!</source>
+        <translation>Невозможно совершить удаление во временном каталоге!</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/freespaceeraser.cpp" line="606"/>
         <source>Can&apos;t remove temporary %1!</source>
         <translation>Невозможно удалить: временный %1!</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="604"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="618"/>
         <source>Can&apos;t open temporary directory!</source>
         <translation>Невозможно открыть временный каталог!</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="650"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="624"/>
+        <source>Can&apos;t get descriptor of temporary directory!</source>
+        <translation>Невозможно получить дескриптор временного каталога!</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/freespaceeraser.cpp" line="670"/>
         <source>&lt;u&gt;Inode space:&lt;/u&gt;&lt;br&gt;Average speed: &lt;b&gt;%1 inodes/s&lt;/b&gt;&lt;br&gt;Space erased: &lt;b&gt;%2 inodes&lt;/b&gt;&lt;br&gt;Time elapsed: &lt;b&gt;%3 seconds&lt;/b&gt;&lt;br&gt;&lt;br&gt;</source>
         <translation>&lt;u&gt;Пространство инодов:&lt;/u&gt;&lt;br&gt;Средняя скорость: &lt;b&gt;%1 инодов/с&lt;/b&gt;&lt;br&gt;Стертое пространство: &lt;b&gt;%2 инодов&lt;/b&gt;&lt;br&gt;Времени затрачено: &lt;b&gt;%3 секунд&lt;/b&gt;&lt;br&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="680"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="700"/>
         <source>Can&apos;t change big file offset for new round!</source>
         <translation>Невозможно изменить смещение большого файла для нового раунда!</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="716"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="736"/>
         <source>Can&apos;t transfer written data to the storage device!</source>
         <translation>Невозможно перенести записанные данные на устройство хранения!</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="722"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="742"/>
         <source>Can&apos;t truncate big file!</source>
         <translation>Невозможно обрезать большой файл!</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="730"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="748"/>
+        <source>Can&apos;t synchronize truncation of big file!</source>
+        <translation>Невозможно синхронизировать обрезание большого файла!</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/freespaceeraser.cpp" line="756"/>
         <source>Can&apos;t close big file!</source>
         <translation>Невозможно закрыть большой файл!</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="750"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="776"/>
         <source>&lt;u&gt;Block space:&lt;/u&gt;&lt;br&gt;Average speed: &lt;b&gt;%1 KiB/s&lt;/b&gt;&lt;br&gt;Space erased: &lt;b&gt;%2&lt;/b&gt;&lt;br&gt;Time elapsed: &lt;b&gt;%3 seconds&lt;/b&gt;&lt;br&gt;&lt;br&gt;</source>
         <translation>&lt;u&gt;Пространство блоков:&lt;/u&gt;&lt;br&gt;Средняя скорость: &lt;b&gt;%1 КиБ/с&lt;/b&gt;&lt;br&gt;Стертое пространство: &lt;b&gt;%2&lt;/b&gt;&lt;br&gt;Времени затрачено: &lt;b&gt;%3 секунд&lt;/b&gt;&lt;br&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="794"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="826"/>
         <source>Can&apos;t close temporary directory!</source>
         <translation>Невозможно закрыть временный каталог!</translation>
     </message>
     <message>
-        <location filename="../src/srm/freespaceeraser.cpp" line="823"/>
+        <location filename="../src/srm/freespaceeraser.cpp" line="861"/>
         <source>&lt;u&gt;Deleting files:&lt;/u&gt;&lt;br&gt;Average speed: &lt;b&gt;%1 files/s&lt;/b&gt;&lt;br&gt;Files deleted: &lt;b&gt;%2 files&lt;/b&gt;&lt;br&gt;Time elapsed: &lt;b&gt;%3 seconds&lt;/b&gt;&lt;br&gt;&lt;br&gt;</source>
         <translation>&lt;u&gt;Удаление файлов:&lt;/u&gt;&lt;br&gt;Средняя скорость: &lt;b&gt;%1 файлов/с&lt;/b&gt;&lt;br&gt;Файлов удалено: &lt;b&gt;%2 файлов&lt;/b&gt;&lt;br&gt;Времени затрачено: &lt;b&gt;%3 секунд&lt;/b&gt;&lt;br&gt;&lt;br&gt;</translation>
     </message>
@@ -1496,289 +1521,9 @@
         <translation>Верификация</translation>
     </message>
     <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="40"/>
-        <source>Overwrite with zeros</source>
-        <translation>Перезапись нулями</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="40"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="41"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="42"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="43"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="44"/>
-        <source>1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="40"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="41"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="42"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="45"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="49"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="53"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="54"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="56"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="57"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="58"/>
         <location filename="../src/gui/overwriterstab.cpp" line="59"/>
-        <source>Without verification</source>
-        <translation>Без верификации</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="41"/>
-        <source>Overwrite with ones</source>
-        <translation>Перезапись единицами</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="42"/>
-        <source>Overwrite with random bytes</source>
-        <translation>Перезапись случайными байтами</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="43"/>
-        <source>British HMG IS5 (Baseline)</source>
-        <translation>Британский HMG IS5 (Базовый)</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="43"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="44"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="46"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="47"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="50"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="51"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="52"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="55"/>
-        <source>Last step</source>
-        <translation>Последний проход</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="44"/>
-        <source>Australian &amp; New Zealand ISM - 2010</source>
-        <translation>Австралийский &amp; Новозеландский ISM - 2010</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="45"/>
-        <source>Russian State Technical Commission - 1992</source>
-        <translation>Гостехкомиссия России - 1992</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="45"/>
-        <source>2</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="46"/>
-        <source>British HMG IS5 (Enhanced)</source>
-        <translation>Британский HMG IS5 (Расширенный)</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="46"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="47"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="48"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="49"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="50"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="51"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="52"/>
-        <source>3</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="47"/>
-        <source>US Army AR380-19</source>
-        <translation>Армия США AR380-19</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="48"/>
-        <source>US Department of Defense 5220.22-M</source>
-        <translation>Министерство обороны США 5220.22-M</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="48"/>
-        <source>All steps</source>
-        <translation>Все проходы</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="49"/>
-        <source>US Department of Defense 5220.22-M (E)</source>
-        <translation>Министерство обороны США 5220.22-M (E)</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="50"/>
-        <source>US NAVSO P-5239-26 (RLL)</source>
-        <translation>NAVSO США P-5239-26 (RLL)</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="51"/>
-        <source>US NAVSO P-5239-26 (MFM)</source>
-        <translation>NAVSO США P-5239-26 (MFM)</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="52"/>
-        <source>US Air Force AFSSI-5020</source>
-        <translation>ВВС США AFSSI-5020</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="53"/>
-        <source>6</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="53"/>
-        <source>German BSI IT BPM</source>
-        <translation>Немецкий BSI IT BPM</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="54"/>
-        <source>US Department of Defense 5220.22-M (ECE)</source>
-        <translation>Министерство обороны США 5220.22-M (ECE)</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="54"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="55"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="56"/>
-        <location filename="../src/gui/overwriterstab.cpp" line="57"/>
-        <source>7</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="55"/>
-        <source>Canadian RCMP TSSIT OPS-II</source>
-        <translation>Канадский RCMP TSSIT OPS-II</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="56"/>
-        <source>German VSITR</source>
-        <translation>Немецкий VSITR</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="57"/>
-        <source>Bruce Schneier&apos;s method</source>
-        <translation>Метод Брюса Шнайера</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="58"/>
-        <source>Roy Pfitzner&apos;s method</source>
-        <translation>Метод Роя Пфицнера</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="58"/>
-        <source>33</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="59"/>
-        <source>Peter Gutmann&apos;s method</source>
-        <translation>Метод Питера Гутмана</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="59"/>
-        <source>35</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="72"/>
         <source>&lt;u&gt;Description:&lt;/u&gt;</source>
         <translation>&lt;u&gt;Описание:&lt;/u&gt;</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="118"/>
-        <source>Your data is overwritten with &apos;0x00&apos; bytes through 1 pass without verification.</source>
-        <translation>Ваши данные будут перезаписаны байтами &apos;0x00&apos; в 1 проход без верификации.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="121"/>
-        <source>Your data is overwritten with &apos;0xFF&apos; bytes through 1 pass without verification.</source>
-        <translation>Ваши данные будут перезаписаны байтами &apos;0xFF&apos; в 1 проход без верификации.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="124"/>
-        <source>Your data is overwritten with random bytes through 1 pass without verification.</source>
-        <translation>Ваши данные будут перезаписаны случайными байтами в 1 проход без верификации.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="127"/>
-        <source>Your data is overwritten with &apos;0x00&apos; bytes through 1 pass with verification.</source>
-        <translation>Ваши данные будут перезаписаны байтами &apos;0x00&apos; в 1 проход с верификацией.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="130"/>
-        <source>Your data is overwritten with random bytes through 1 pass with verification.</source>
-        <translation>Ваши данные будут перезаписаны случайными байтами в 1 проход с верификацией.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="133"/>
-        <source>Your data is overwritten through 2 passes without verification: first pass - with &apos;0x00&apos; bytes and the last pass - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 2 прохода без верификации: первый проход - байтами &apos;0x00&apos;, а последний проход - случайными байтами.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="136"/>
-        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with &apos;0x00&apos; bytes, second pass - with &apos;0xFF&apos; bytes and the last pass - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - байтами &apos;0x00&apos;, второй проход - байтами &apos;0xFF&apos;, а последний проход - случайными байтами.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="139"/>
-        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with random bytes, then 2 passes - with certain byte and with its complement.</source>
-        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - случайными байтами, а затем 2 прохода - определенным байтом и его дополнением.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="142"/>
-        <source>Your data is overwritten through 3 passes with verification of all passes: first pass - with &apos;0x00&apos; bytes, second pass - with &apos;0xFF&apos; bytes and the last pass - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией всех проходов: первый проход - байтами &apos;0x00&apos;, второй проход - байтами &apos;0xFF&apos;, а последний проход - случайными байтами.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="145"/>
-        <source>Your data is overwritten through 3 passes without verification: 2 passes - with certain byte and with its complement and the last pass - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 3 прохода без верификации: 2 прохода - определенным байтом и его дополнением, а последний проход - случайными байтами.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="148"/>
-        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with &apos;0xFF&apos; bytes, second pass - with special RLL pattern and the last pass - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - байтами &apos;0xFF&apos;, второй проход - специальным RLL шаблоном, а последний проход - случайными байтами.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="151"/>
-        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with &apos;0xFF&apos; bytes, second pass - with special MFM pattern and the last pass - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - байтами &apos;0xFF&apos;, второй проход - специальным MFM шаблоном, а последний проход - случайными байтами.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="154"/>
-        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with &apos;0x00&apos; bytes, second pass - with &apos;0xFF&apos; bytes and the last pass - with certain byte.</source>
-        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - байтами &apos;0x00&apos;, второй проход - байтами &apos;0xFF&apos;, а последний проход - определенным байтом.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="157"/>
-        <source>Your data is overwritten with certain bytes and with their complements through 6 passes without verification.</source>
-        <translation>Ваши данные будут перезаписаны определенными байтами и их дополнениями в 6 проходов без верификации.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="160"/>
-        <source>Your data is overwritten through 7 passes without verification: 2 passes - with certain byte and with its complement, then 2 passes - with random bytes, then 2 passes - with certain byte and with its complement and the last pass - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 7 проходов без верификации: 2 прохода - определенным байтом и его дополнением, затем 2 прохода - случайными байтами, затем 2 прохода - определенным байтом и его дополнением, а последний проход - случайными байтами.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="163"/>
-        <source>Your data is overwritten through 7 passes with verification of last pass: 6 alternating passes - with &apos;0x00&apos; bytes and &apos;0xFF&apos; bytes and the last pass - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 7 проходов с верификацией последнего прохода: 6 чередующихся проходов - байтами &apos;0x00&apos; и байтами &apos;0xFF&apos;, а последний проход - случайными байтами.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="166"/>
-        <source>Your data is overwritten through 7 passes without verification: 6 alternating passes - with &apos;0x00&apos; bytes and &apos;0xFF&apos; bytes and the last pass - with &apos;0xAA&apos; bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 7 проходов без верификации: 6 чередующихся проходов - байтами &apos;0x00&apos; и байтами &apos;0xFF&apos;, а последний проход - байтами &apos;0xAA&apos;.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="169"/>
-        <source>Your data is overwritten through 7 passes without verification: first pass - with &apos;0xFF&apos; bytes, second pass - with &apos;0x00&apos; bytes, then 5 passes - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 7 проходов без верификации: первый проход - байтами &apos;0xFF&apos;, второй проход - байтами &apos;0x00&apos;, а затем 5 проходов - случайными байтами.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="172"/>
-        <source>Your data is overwritten with random bytes through 33 passes without verification.</source>
-        <translation>Ваши данные будут перезаписаны случайными байтами в 33 прохода без верификации.</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/overwriterstab.cpp" line="175"/>
-        <source>Your data is overwritten through 35 passes without verification: 4 passes - with random bytes, then 27 passes - with special Gutmann&apos;s patterns, then 4 passes - with random bytes.</source>
-        <translation>Ваши данные будут перезаписаны в 35 проходов без верификации: 4 прохода - случайными байтами, затем 27 проходов - специальными шаблонами Гутмана, а затем 4 прохода - случайными байтами.</translation>
     </message>
 </context>
 <context>
@@ -1956,6 +1701,221 @@
         <location filename="../src/srm/systeminfo.cpp" line="307"/>
         <source>%1 EiB</source>
         <translation>%1 ЭиБ</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/afssioverwriter.cpp" line="48"/>
+        <source>US Air Force AFSSI-5020</source>
+        <translation>ВВС США AFSSI-5020</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/afssioverwriter.cpp" line="53"/>
+        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with &apos;0x00&apos; bytes, second pass - with &apos;0xFF&apos; bytes and the last pass - with certain byte.</source>
+        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - байтами &apos;0x00&apos;, второй проход - байтами &apos;0xFF&apos;, а последний проход - определенным байтом.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/bsioverwriter.cpp" line="48"/>
+        <source>German BSI IT BPM</source>
+        <translation>Немецкий BSI IT BPM</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/bsioverwriter.cpp" line="53"/>
+        <source>Your data is overwritten with certain bytes and with their complements through 6 passes without verification.</source>
+        <translation>Ваши данные будут перезаписаны определенными байтами и их дополнениями в 6 проходов без верификации.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/gostoverwriter.cpp" line="46"/>
+        <source>Russian State Technical Commission - 1992</source>
+        <translation>Гостехкомиссия России - 1992</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/gostoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten through 2 passes without verification: first pass - with &apos;0x00&apos; bytes and the last pass - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 2 прохода без верификации: первый проход - байтами &apos;0x00&apos;, а последний проход - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/gutmannoverwriter.cpp" line="54"/>
+        <source>Peter Gutmann&apos;s method</source>
+        <translation>Метод Питера Гутмана</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/gutmannoverwriter.cpp" line="59"/>
+        <source>Your data is overwritten through 35 passes without verification: 4 passes - with random bytes, then 27 passes - with special Gutmann&apos;s patterns, then 4 passes - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 35 проходов без верификации: 4 прохода - случайными байтами, затем 27 проходов - специальными шаблонами Гутмана, а затем 4 прохода - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/hmgbaseoverwriter.cpp" line="46"/>
+        <source>British HMG IS5 (Baseline)</source>
+        <translation>Британский HMG IS5 (Базовый)</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/hmgbaseoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten with &apos;0x00&apos; bytes through 1 pass with verification.</source>
+        <translation>Ваши данные будут перезаписаны байтами &apos;0x00&apos; в 1 проход с верификацией.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/hmgenhancedoverwriter.cpp" line="46"/>
+        <source>British HMG IS5 (Enhanced)</source>
+        <translation>Британский HMG IS5 (Расширенный)</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/hmgenhancedoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with &apos;0x00&apos; bytes, second pass - with &apos;0xFF&apos; bytes and the last pass - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - байтами &apos;0x00&apos;, второй проход - байтами &apos;0xFF&apos;, а последний проход - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/ismoverwriter.cpp" line="46"/>
+        <source>Australian &amp; New Zealand ISM - 2010</source>
+        <translation>Австралийский &amp; Новозеландский ISM - 2010</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/ismoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten with random bytes through 1 pass with verification.</source>
+        <translation>Ваши данные будут перезаписаны случайными байтами в 1 проход с верификацией.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/navsomfmoverwriter.cpp" line="48"/>
+        <source>US NAVSO P-5239-26 (MFM)</source>
+        <translation>NAVSO США P-5239-26 (MFM)</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/navsomfmoverwriter.cpp" line="53"/>
+        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with &apos;0xFF&apos; bytes, second pass - with special MFM pattern and the last pass - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - байтами &apos;0xFF&apos;, второй проход - специальным MFM шаблоном, а последний проход - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/navsorlloverwriter.cpp" line="48"/>
+        <source>US NAVSO P-5239-26 (RLL)</source>
+        <translation>NAVSO США P-5239-26 (RLL)</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/navsorlloverwriter.cpp" line="53"/>
+        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with &apos;0xFF&apos; bytes, second pass - with special RLL pattern and the last pass - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - байтами &apos;0xFF&apos;, второй проход - специальным RLL шаблоном, а последний проход - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/oneoverwriter.cpp" line="46"/>
+        <source>Overwrite with ones</source>
+        <translation>Перезапись единицами</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/oneoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten with &apos;0xFF&apos; bytes through 1 pass without verification.</source>
+        <translation>Ваши данные будут перезаписаны байтами &apos;0xFF&apos; в 1 проход без верификации.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/overwriter.cpp" line="33"/>
+        <source>Without verification</source>
+        <translation>Без верификации</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/overwriter.cpp" line="34"/>
+        <source>Last step</source>
+        <translation>Последний проход</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/overwriter.cpp" line="35"/>
+        <source>All steps</source>
+        <translation>Все проходы</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/pfitzneroverwriter.cpp" line="46"/>
+        <source>Roy Pfitzner&apos;s method</source>
+        <translation>Метод Роя Пфицнера</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/pfitzneroverwriter.cpp" line="51"/>
+        <source>Your data is overwritten with random bytes through 33 passes without verification.</source>
+        <translation>Ваши данные будут перезаписаны случайными байтами в 33 прохода без верификации.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/randomoverwriter.cpp" line="46"/>
+        <source>Overwrite with random bytes</source>
+        <translation>Перезапись случайными байтами</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/randomoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten with random bytes through 1 pass without verification.</source>
+        <translation>Ваши данные будут перезаписаны случайными байтами в 1 проход без верификации.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/rcmpoverwriter.cpp" line="46"/>
+        <source>Canadian RCMP TSSIT OPS-II</source>
+        <translation>Канадский RCMP TSSIT OPS-II</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/rcmpoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten through 7 passes with verification of last pass: 6 alternating passes - with &apos;0x00&apos; bytes and &apos;0xFF&apos; bytes and the last pass - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 7 проходов с верификацией последнего прохода: 6 чередующихся проходов - байтами &apos;0x00&apos; и байтами &apos;0xFF&apos;, а последний проход - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/schneieroverwriter.cpp" line="46"/>
+        <source>Bruce Schneier&apos;s method</source>
+        <translation>Метод Брюса Шнайера</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/schneieroverwriter.cpp" line="51"/>
+        <source>Your data is overwritten through 7 passes without verification: first pass - with &apos;0xFF&apos; bytes, second pass - with &apos;0x00&apos; bytes, then 5 passes - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 7 проходов без верификации: первый проход - байтами &apos;0xFF&apos;, второй проход - байтами &apos;0x00&apos;, а затем 5 проходов - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/usarmyoverwriter.cpp" line="46"/>
+        <source>US Army AR380-19</source>
+        <translation>Армия США AR380-19</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/usarmyoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten through 3 passes with verification of last pass: first pass - with random bytes, then 2 passes - with certain byte and with its complement.</source>
+        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией последнего прохода: первый проход - случайными байтами, а затем 2 прохода - определенным байтом и его дополнением.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/usdodeceoverwriter.cpp" line="46"/>
+        <source>US Department of Defense 5220.22-M (ECE)</source>
+        <translation>Министерство обороны США 5220.22-M (ECE)</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/usdodeceoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten through 7 passes without verification: 2 passes - with certain byte and with its complement, then 2 passes - with random bytes, then 2 passes - with certain byte and with its complement and the last pass - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 7 проходов без верификации: 2 прохода - определенным байтом и его дополнением, затем 2 прохода - случайными байтами, затем 2 прохода - определенным байтом и его дополнением, а последний проход - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/usdodeoverwriter.cpp" line="46"/>
+        <source>US Department of Defense 5220.22-M (E)</source>
+        <translation>Министерство обороны США 5220.22-M (E)</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/usdodeoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten through 3 passes without verification: 2 passes - with certain byte and with its complement and the last pass - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 3 прохода без верификации: 2 прохода - определенным байтом и его дополнением, а последний проход - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/usdodoverwriter.cpp" line="46"/>
+        <source>US Department of Defense 5220.22-M</source>
+        <translation>Министерство обороны США 5220.22-M</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/usdodoverwriter.cpp" line="51"/>
+        <source>Your data is overwritten through 3 passes with verification of all passes: first pass - with &apos;0x00&apos; bytes, second pass - with &apos;0xFF&apos; bytes and the last pass - with random bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 3 прохода с верификацией всех проходов: первый проход - байтами &apos;0x00&apos;, второй проход - байтами &apos;0xFF&apos;, а последний проход - случайными байтами.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/vsitroverwriter.cpp" line="46"/>
+        <source>German VSITR</source>
+        <translation>Немецкий VSITR</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/vsitroverwriter.cpp" line="51"/>
+        <source>Your data is overwritten through 7 passes without verification: 6 alternating passes - with &apos;0x00&apos; bytes and &apos;0xFF&apos; bytes and the last pass - with &apos;0xAA&apos; bytes.</source>
+        <translation>Ваши данные будут перезаписаны в 7 проходов без верификации: 6 чередующихся проходов - байтами &apos;0x00&apos; и байтами &apos;0xFF&apos;, а последний проход - байтами &apos;0xAA&apos;.</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/zerooverwriter.cpp" line="46"/>
+        <source>Overwrite with zeros</source>
+        <translation>Перезапись нулями</translation>
+    </message>
+    <message>
+        <location filename="../src/srm/owr/zerooverwriter.cpp" line="51"/>
+        <source>Your data is overwritten with &apos;0x00&apos; bytes through 1 pass without verification.</source>
+        <translation>Ваши данные будут перезаписаны байтами &apos;0x00&apos; в 1 проход без верификации.</translation>
     </message>
 </context>
 <context>

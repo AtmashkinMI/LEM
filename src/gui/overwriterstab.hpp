@@ -22,6 +22,8 @@
 
 #include <QWidget>
 
+#include "../srm/overwriters.hpp"
+
 class QLabel;
 class QTableWidget;
 class QTableWidgetItem;

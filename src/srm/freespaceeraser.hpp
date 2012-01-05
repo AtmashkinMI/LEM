@@ -99,6 +99,8 @@ private:
 
     int progress;
     int startPos;
+
+    int tmpDirDesc;
     int bigFileDesc;
 
     DIR *tmpDirPtr;

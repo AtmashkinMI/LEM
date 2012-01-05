@@ -41,6 +41,16 @@ Overwriter::Verification HMGBaseOverwriter::verificationType()
     return LastRound;
 }
 
+QString HMGBaseOverwriter::getName()
+{
+    return QObject::tr("British HMG IS5 (Baseline)");
+}
+
+QString HMGBaseOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten with '0x00' bytes through 1 pass with verification.");
+}
+
 bool HMGBaseOverwriter::isConstantRound(int round)
 {
     Q_UNUSED(round)

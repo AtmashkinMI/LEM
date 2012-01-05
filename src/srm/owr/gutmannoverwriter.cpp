@@ -49,6 +49,16 @@ Overwriter::Verification GutmannOverwriter::verificationType()
     return No;
 }
 
+QString GutmannOverwriter::getName()
+{
+    return QObject::tr("Peter Gutmann's method");
+}
+
+QString GutmannOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 35 passes without verification: 4 passes - with random bytes, then 27 passes - with special Gutmann's patterns, then 4 passes - with random bytes.");
+}
+
 bool GutmannOverwriter::isConstantRound(int round)
 {
     return round < 4 || round > 30 ? false : true;

@@ -20,20 +20,27 @@
 #ifndef OVERWRITER_HPP
 #define OVERWRITER_HPP
 
+#include <QObject>
+#include <QString>
+
 class Overwriter
 {
 public:
     Overwriter();
 
+    virtual ~Overwriter();
+
     virtual int getRounds() = 0;
     virtual bool isConstantRound(int round) = 0;
     virtual void fillBlock(char *block, int blockSize, int round) = 0;
 
+    virtual QString getName() = 0;
+    virtual QString getDescription() = 0;
+
     enum Verification {No, LastRound, AllRouns};
 
+    QString verificationName(Verification type);
     virtual Verification verificationType() = 0;
-
-    virtual ~Overwriter();
 };
 
 #endif // OVERWRITER_HPP

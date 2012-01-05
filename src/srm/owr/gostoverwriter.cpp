@@ -41,6 +41,16 @@ Overwriter::Verification GostOverwriter::verificationType()
     return No;
 }
 
+QString GostOverwriter::getName()
+{
+    return QObject::tr("Russian State Technical Commission - 1992");
+}
+
+QString GostOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 2 passes without verification: first pass - with '0x00' bytes and the last pass - with random bytes.");
+}
+
 bool GostOverwriter::isConstantRound(int round)
 {
     return round == 1 ? false : true;

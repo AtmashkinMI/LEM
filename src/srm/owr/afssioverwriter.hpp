@@ -33,6 +33,9 @@ public:
     bool isConstantRound(int round);
     void fillBlock(char *block, int blockSize, int round);
 
+    QString getName();
+    QString getDescription();
+
     Verification verificationType();
 
     ~AFSSIOverwriter();

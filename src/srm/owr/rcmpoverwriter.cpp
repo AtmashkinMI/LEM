@@ -41,6 +41,16 @@ Overwriter::Verification RCMPOverwriter::verificationType()
     return LastRound;
 }
 
+QString RCMPOverwriter::getName()
+{
+    return QObject::tr("Canadian RCMP TSSIT OPS-II");
+}
+
+QString RCMPOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 7 passes with verification of last pass: 6 alternating passes - with '0x00' bytes and '0xFF' bytes and the last pass - with random bytes.");
+}
+
 bool RCMPOverwriter::isConstantRound(int round)
 {
     return round == 6 ? false : true;

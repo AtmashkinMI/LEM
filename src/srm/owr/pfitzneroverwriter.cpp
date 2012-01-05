@@ -41,6 +41,16 @@ Overwriter::Verification PfitznerOverwriter::verificationType()
     return No;
 }
 
+QString PfitznerOverwriter::getName()
+{
+    return QObject::tr("Roy Pfitzner's method");
+}
+
+QString PfitznerOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten with random bytes through 33 passes without verification.");
+}
+
 bool PfitznerOverwriter::isConstantRound(int round)
 {
     Q_UNUSED(round)

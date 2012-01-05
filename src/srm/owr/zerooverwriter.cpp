@@ -41,6 +41,16 @@ Overwriter::Verification ZeroOverwriter::verificationType()
     return No;
 }
 
+QString ZeroOverwriter::getName()
+{
+    return QObject::tr("Overwrite with zeros");
+}
+
+QString ZeroOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten with '0x00' bytes through 1 pass without verification.");
+}
+
 bool ZeroOverwriter::isConstantRound(int round)
 {
     Q_UNUSED(round)

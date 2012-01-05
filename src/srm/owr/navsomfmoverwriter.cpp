@@ -43,6 +43,16 @@ Overwriter::Verification NAVSOMFMOverwriter::verificationType()
     return LastRound;
 }
 
+QString NAVSOMFMOverwriter::getName()
+{
+    return QObject::tr("US NAVSO P-5239-26 (MFM)");
+}
+
+QString NAVSOMFMOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0xFF' bytes, second pass - with special MFM pattern and the last pass - with random bytes.");
+}
+
 bool NAVSOMFMOverwriter::isConstantRound(int round)
 {
     return round == 2 ? false : true;

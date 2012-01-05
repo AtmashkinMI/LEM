@@ -43,6 +43,16 @@ Overwriter::Verification AFSSIOverwriter::verificationType()
     return LastRound;
 }
 
+QString AFSSIOverwriter::getName()
+{
+    return QObject::tr("US Air Force AFSSI-5020");
+}
+
+QString AFSSIOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten through 3 passes with verification of last pass: first pass - with '0x00' bytes, second pass - with '0xFF' bytes and the last pass - with certain byte.");
+}
+
 bool AFSSIOverwriter::isConstantRound(int round)
 {
     Q_UNUSED(round)

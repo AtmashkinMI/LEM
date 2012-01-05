@@ -41,6 +41,16 @@ Overwriter::Verification OneOverwriter::verificationType()
     return No;
 }
 
+QString OneOverwriter::getName()
+{
+    return QObject::tr("Overwrite with ones");
+}
+
+QString OneOverwriter::getDescription()
+{
+    return QObject::tr("Your data is overwritten with '0xFF' bytes through 1 pass without verification.");
+}
+
 bool OneOverwriter::isConstantRound(int round)
 {
     Q_UNUSED(round)
