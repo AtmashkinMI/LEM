@@ -32,7 +32,7 @@ public:
 
     virtual int getRounds() = 0;
     virtual bool isConstantRound(int round) = 0;
-    virtual void fillBlock(char *block, int blockSize, int round) = 0;
+    virtual void fillBlock(char *block, int size, int round) = 0;
 
     virtual QString getName() = 0;
     virtual QString getDescription() = 0;

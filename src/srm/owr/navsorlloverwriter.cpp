@@ -58,14 +58,14 @@ bool NAVSORLLOverwriter::isConstantRound(int round)
     return round == 2 ? false : true;
 }
 
-void NAVSORLLOverwriter::fillBlock(char *block, int blockSize, int round)
+void NAVSORLLOverwriter::fillBlock(char *block, int size, int round)
 {
     switch (round) {
         case 0:
-            memset(block, '\xff', blockSize);
+            memset(block, '\xff', size);
             break;
         case 1:
-            for (int i = 0; i < blockSize / 4; ++i) {
+            for (int i = 0; i < size / 4; ++i) {
                 *block++ = pattern[0];
                 *block++ = pattern[1];
                 *block++ = pattern[2];
@@ -73,7 +73,7 @@ void NAVSORLLOverwriter::fillBlock(char *block, int blockSize, int round)
             }
             break;
         case 2:
-            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
+            for (int count = 0; count < size; count += fread(block, 1, size - count, randomSource));
             break;
     }
 }

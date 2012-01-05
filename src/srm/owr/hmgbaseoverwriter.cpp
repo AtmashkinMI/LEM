@@ -58,9 +58,9 @@ bool HMGBaseOverwriter::isConstantRound(int round)
     return true;
 }
 
-void HMGBaseOverwriter::fillBlock(char *block, int blockSize, int round)
+void HMGBaseOverwriter::fillBlock(char *block, int size, int round)
 {
     Q_UNUSED(round)
 
-    memset(block, '\x00', blockSize);
+    memset(block, '\x00', size);
 }

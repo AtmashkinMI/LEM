@@ -31,7 +31,7 @@ public:
 
     int getRounds();
     bool isConstantRound(int round);
-    void fillBlock(char *block, int blockSize, int round);
+    void fillBlock(char *block, int size, int round);
 
     QString getName();
     QString getDescription();

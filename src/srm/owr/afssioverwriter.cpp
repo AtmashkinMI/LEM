@@ -60,17 +60,17 @@ bool AFSSIOverwriter::isConstantRound(int round)
     return true;
 }
 
-void AFSSIOverwriter::fillBlock(char *block, int blockSize, int round)
+void AFSSIOverwriter::fillBlock(char *block, int size, int round)
 {
     switch (round) {
         case 0:
-            memset(block, '\x00', blockSize);
+            memset(block, '\x00', size);
             break;
         case 1:
-            memset(block, '\xff', blockSize);
+            memset(block, '\xff', size);
             break;
         case 2:
-            memset(block, getc(randomSource), blockSize);
+            memset(block, getc(randomSource), size);
             break;
     }
 }

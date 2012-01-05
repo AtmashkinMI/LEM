@@ -58,9 +58,9 @@ bool RandomOverwriter::isConstantRound(int round)
     return false;
 }
 
-void RandomOverwriter::fillBlock(char *block, int blockSize, int round)
+void RandomOverwriter::fillBlock(char *block, int size, int round)
 {
     Q_UNUSED(round)
 
-    for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
+    for (int count = 0; count < size; count += fread(block, 1, size - count, randomSource));
 }

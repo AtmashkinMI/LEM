@@ -56,14 +56,14 @@ bool GostOverwriter::isConstantRound(int round)
     return round == 1 ? false : true;
 }
 
-void GostOverwriter::fillBlock(char *block, int blockSize, int round)
+void GostOverwriter::fillBlock(char *block, int size, int round)
 {
     switch (round) {
         case 0:
-            memset(block, '\x00', blockSize);
+            memset(block, '\x00', size);
             break;
         case 1:
-            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
+            for (int count = 0; count < size; count += fread(block, 1, size - count, randomSource));
             break;
     }
 }

@@ -56,21 +56,21 @@ bool RCMPOverwriter::isConstantRound(int round)
     return round == 6 ? false : true;
 }
 
-void RCMPOverwriter::fillBlock(char *block, int blockSize, int round)
+void RCMPOverwriter::fillBlock(char *block, int size, int round)
 {
     switch (round) {
         case 0:
         case 2:
         case 4:
-            memset(block, '\x00', blockSize);
+            memset(block, '\x00', size);
             break;
         case 1:
         case 3:
         case 5:
-            memset(block, '\xff', blockSize);
+            memset(block, '\xff', size);
             break;
         case 6:
-            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
+            for (int count = 0; count < size; count += fread(block, 1, size - count, randomSource));
             break;
     }
 }

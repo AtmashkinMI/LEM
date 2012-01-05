@@ -58,9 +58,9 @@ bool ISMOverwriter::isConstantRound(int round)
     return false;
 }
 
-void ISMOverwriter::fillBlock(char *block, int blockSize, int round)
+void ISMOverwriter::fillBlock(char *block, int size, int round)
 {
     Q_UNUSED(round)
 
-    for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
+    for (int count = 0; count < size; count += fread(block, 1, size - count, randomSource));
 }

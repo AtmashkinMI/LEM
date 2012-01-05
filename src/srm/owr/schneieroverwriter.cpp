@@ -56,17 +56,17 @@ bool SchneierOverwriter::isConstantRound(int round)
     return round >= 2 ? false : true;
 }
 
-void SchneierOverwriter::fillBlock(char *block, int blockSize, int round)
+void SchneierOverwriter::fillBlock(char *block, int size, int round)
 {
     switch (round) {
         case 0:
-            memset(block, '\xff', blockSize);
+            memset(block, '\xff', size);
             break;
         case 1:
-            memset(block, '\x00', blockSize);
+            memset(block, '\x00', size);
             break;
         default:
-            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
+            for (int count = 0; count < size; count += fread(block, 1, size - count, randomSource));
             break;
     }
 }

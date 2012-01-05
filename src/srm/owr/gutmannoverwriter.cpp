@@ -64,7 +64,7 @@ bool GutmannOverwriter::isConstantRound(int round)
     return round < 4 || round > 30 ? false : true;
 }
 
-void GutmannOverwriter::fillBlock(char *block, int blockSize, int round)
+void GutmannOverwriter::fillBlock(char *block, int size, int round)
 {
     switch (round) {
         case 0:
@@ -75,10 +75,10 @@ void GutmannOverwriter::fillBlock(char *block, int blockSize, int round)
         case 32:
         case 33:
         case 34:
-            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
+            for (int count = 0; count < size; count += fread(block, 1, size - count, randomSource));
             break;
         default:
-            for (int i = 0; i < blockSize / 3; ++i) {
+            for (int i = 0; i < size / 3; ++i) {
                 *block++ = patterns[round - 4][0];
                 *block++ = patterns[round - 4][1];
                 *block++ = patterns[round - 4][2];

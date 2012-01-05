@@ -58,9 +58,9 @@ bool OneOverwriter::isConstantRound(int round)
     return true;
 }
 
-void OneOverwriter::fillBlock(char *block, int blockSize, int round)
+void OneOverwriter::fillBlock(char *block, int size, int round)
 {
     Q_UNUSED(round)
 
-    memset(block, '\xff', blockSize);
+    memset(block, '\xff', size);
 }

@@ -60,29 +60,29 @@ bool BSIOverwriter::isConstantRound(int round)
     return true;
 }
 
-void BSIOverwriter::fillBlock(char *block, int blockSize, int round)
+void BSIOverwriter::fillBlock(char *block, int size, int round)
 {
     switch (round) {
         case 0:
             specChars[0] = getc(randomSource);
-            memset(block, specChars[0], blockSize);
+            memset(block, specChars[0], size);
             break;
         case 1:
-            memset(block, ~specChars[0], blockSize);
+            memset(block, ~specChars[0], size);
             break;
         case 2:
             specChars[1] = getc(randomSource);
-            memset(block, specChars[1], blockSize);
+            memset(block, specChars[1], size);
             break;
         case 3:
-            memset(block, ~specChars[1], blockSize);
+            memset(block, ~specChars[1], size);
             break;
         case 4:
             specChars[2] = getc(randomSource);
-            memset(block, specChars[2], blockSize);
+            memset(block, specChars[2], size);
             break;
         case 5:
-            memset(block, ~specChars[2], blockSize);
+            memset(block, ~specChars[2], size);
             break;
     }
 }

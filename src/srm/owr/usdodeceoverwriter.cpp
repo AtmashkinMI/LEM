@@ -56,27 +56,27 @@ bool USDoDECEOverwriter::isConstantRound(int round)
     return round == 2 || round == 3 || round == 6 ? false : true;
 }
 
-void USDoDECEOverwriter::fillBlock(char *block, int blockSize, int round)
+void USDoDECEOverwriter::fillBlock(char *block, int size, int round)
 {
     switch (round) {
         case 0:
             specChars[0] = getc(randomSource);
-            memset(block, specChars[0], blockSize);
+            memset(block, specChars[0], size);
             break;
         case 1:
-            memset(block, ~specChars[0], blockSize);
+            memset(block, ~specChars[0], size);
             break;
         case 4:
             specChars[1] = getc(randomSource);
-            memset(block, specChars[1], blockSize);
+            memset(block, specChars[1], size);
             break;
         case 5:
-            memset(block, ~specChars[1], blockSize);
+            memset(block, ~specChars[1], size);
             break;
         case 2:
         case 3:
         case 6:
-            for (int count = 0; count < blockSize; count += fread(block, 1, blockSize - count, randomSource));
+            for (int count = 0; count < size; count += fread(block, 1, size - count, randomSource));
             break;
     }
 }

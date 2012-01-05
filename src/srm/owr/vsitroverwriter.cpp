@@ -58,21 +58,21 @@ bool VSITROverwriter::isConstantRound(int round)
     return true;
 }
 
-void VSITROverwriter::fillBlock(char *block, int blockSize, int round)
+void VSITROverwriter::fillBlock(char *block, int size, int round)
 {
     switch (round) {
         case 0:
         case 2:
         case 4:
-            memset(block, '\x00', blockSize);
+            memset(block, '\x00', size);
             break;
         case 1:
         case 3:
         case 5:
-            memset(block, '\xff', blockSize);
+            memset(block, '\xff', size);
             break;
         case 6:
-            memset(block, '\xaa', blockSize);
+            memset(block, '\xaa', size);
             break;
     }
 }
